@@ -1,0 +1,12 @@
+<ion-view title="Subjects">
+    <ion-content>
+        <!-- <div class="list"> -->
+            <div class="list card item-balanced" ng-repeat="subject in subjects" ng-click="previewSubject(subject)">
+            	<div class="item">
+            		<h2>{{subject.name}}</h2>
+	                <p>{{subject.code}}</p>
+            	</div>
+            </div>
+        <!-- </div> -->
+    </ion-content>
+</ion-view>

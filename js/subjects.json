@@ -1,0 +1,32 @@
+[
+  {
+    "code":"GSU07102",
+    "name":"Communication Skills",    
+    "tutor":"Mtani E."
+  },
+  {
+    "code":"MTU07104",
+    "name":"Q Mathematics",    
+    "tutor":"Mkandawile"
+  },
+  {
+    "code":"ITU07103",
+    "name":"System Analysis Design",    
+    "tutor":"Koloseni D."
+  },
+  {
+    "code":"GSU07103",
+    "name":"Development Studies",    
+    "tutor":"Mwolo M."
+  },
+  {
+    "code":"CSU07102",
+    "name":"Computer Fundamentals",    
+    "tutor":"Masamila B."
+  },
+  {
+    "code":"CSU07101",
+    "name":"Programming in C",    
+    "tutor":"Mwachaka S."
+  }
+]

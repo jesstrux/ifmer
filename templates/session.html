@@ -1,0 +1,29 @@
+<ion-modal-view>
+  <ion-header-bar style="height:200px" ng-class="{'bar-royal' : session.type === 'self', 'bar-energized' : session.type === 'tutorial', 'bar-calm' : session.type === 'lecture'}">
+    <div class="buttons buttons-left">
+      <span class="left-buttons">
+        <button class="button button-clear icon ion-android-close" ng-click="closeSession()"></button>
+      </span>
+    </div>
+    <h1 class="title" style="top:100px;height:120px;font-size:30px">
+      {{session.subject.subject}}
+      <p style="color:#fff">{{session.type}}</p>
+    </h1>
+  </ion-header-bar>
+  <ion-content style="top:200px">
+    <div class="list" style="margin:0">
+      <div class="item item-icon-left">
+          <i class="icon ion-clock" style="font-size:20px;"></i>
+          <h2>{{session.timeline.timeline}}</h2>
+      </div>
+      <div class="item item-icon-left" ng-if="session.type!=='self'">
+          <i class="icon ion-location" style="font-size:20px;"></i>
+          <h2>{{session.venue}}</h2>
+      </div>
+      <div class="item item-icon-left" ng-if="session.type==='tutorial'">
+          <i class="icon ion-android-people" style="font-size:20px;"></i>
+          <h2>{{session.group}}</h2>
+      </div>
+    </div>
+  </ion-content>
+</ion-modal-view>

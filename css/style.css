@@ -1,0 +1,59 @@
+/* Empty. Add your own CSS if you like */
+.menu-open .ion-android-menu{
+    transform: rotate(-360deg);
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
+.menu-open .ion-android-menu:before {
+    content: "\f2ca";
+}
+
+.popover{
+    width:180px;
+    height: auto !important;
+}
+.popover .item:not(:last-child){
+  border-bottom:1px solid #f2f2f2;
+}
+
+.bar .title{
+  position: relative;
+  left:5px !important;
+  font-size: 20px !important;
+}
+
+p {
+    color: #555;
+    margin: 0 0 25px;
+}
+.scroll {
+    height: 100%;
+}
+.slider{
+    height: 100%;
+}
+.slide{
+    height: 100%;
+    width: 100%;
+}
+
+.fade-in {
+  -webkit-transform: scale(0.0);
+  transform: scale(0.0);
+  opacity: 0;
+}
+.fade-in.ng-enter, .fade-in > .ng-enter {
+  -webkit-transition: all cubic-bezier(0.1, 0.7, 0.1, 1) 250ms;
+  transition: all cubic-bezier(0.1, 0.7, 0.1, 1) 250ms;
+}
+.fade-in.ng-enter-active,
+.fade-in > .ng-enter-active {
+  -webkit-transform: scale(1.0);
+  transform: scale(1.0);
+  opacity: 1;
+}
+.fade-in.ng-leave, .fade-in > .ng-leave {
+  -webkit-transition: all ease-in-out 250ms;
+  transition: all ease-in-out 250ms;
+}

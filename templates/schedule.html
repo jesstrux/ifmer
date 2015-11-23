@@ -1,0 +1,50 @@
+<ion-view title="Schedule">
+    <ion-nav-buttons side="right">
+        <button class="button button-icon button-clear icon ion-android-calendar">
+        </button>
+        <button class="button button-icon button-clear icon ion-android-more-vertical" ng-click="mainPopover.show($event)">
+        </button>
+      </ion-nav-buttons>
+      <div ng-switch on="which">
+          <ion-content ng-switch-when="2">
+                <div class="list" ng-repeat="day in schedule">
+                    <div class="item item-icon-left" style="padding-left:90px;" ng-repeat="session in day.sessions">
+                        <i class="icon" ng-if="$index==0" style="margin-top:-10px;font-size:25px;">{{day.day.substr(0,3)}}</i>
+                        <div class="list">
+                            <div class="item item-icon-lef" ng-class="{'item-royal' : session.type === 'self', 'item-energized' : session.type === 'tutorial', 'item-calm' : session.type === 'lecture'}" ng-click="previewSession(session)">
+                                <h2 style="color:#fff">{{session.timeline.timeline}}</h2>
+                                <h2 style="color:#fff">{{session.subject.subject}}</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ion-content>
+            <ion-content ng-switch-when="1">
+                <ion-slide-box show-pager="false">
+                    <ion-slide class="slide" ng-repeat="day in schedule">
+                        <ion-content>
+                            <div class="list">
+                                <div class="item item-icon-left" style="padding-left:90px;margin-to:10px" ng-if="day.sessions.length < 1">
+                                    <i class="icon" style="margin-top:-10px;font-size:25px;">{{day.day.substr(0,3)}}</i>
+                                    <div class="list">
+                                        <div class="item">
+                                            <h2>No sessions on this day.</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item item-icon-left" style="padding-left:90px;" ng-repeat="session in day.sessions">
+                                    <i class="icon" ng-if="$index==0" style="margin-top:-10px;font-size:25px;">{{day.day.substr(0,3)}}</i>
+                                    <div class="list">
+                                        <div class="item item-icon-lef" ng-class="{'item-royal' : session.type === 'self', 'item-energized' : session.type === 'tutorial', 'item-calm' : session.type === 'lecture'}" ng-click="previewSession(session)">
+                                            <h2 style="color:#fff">{{session.timeline.timeline}}</h2>
+                                            <h2 style="color:#fff">{{session.subject.subject}}</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ion-content>
+                    </ion-slide>
+                </ion-slide-box>
+            </ion-content>
+      </div>
+</ion-view>
