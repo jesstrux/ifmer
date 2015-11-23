@@ -12,8 +12,8 @@
                         <i class="icon" ng-if="$index==0" style="margin-top:-10px;font-size:25px;">{{day.day.substr(0,3)}}</i>
                         <div class="list">
                             <div class="item item-icon-lef" ng-class="{'item-royal' : session.type === 'self', 'item-energized' : session.type === 'tutorial', 'item-calm' : session.type === 'lecture'}" ng-click="previewSession(session)">
-                                <h2 style="color:#fff">{{session.timeline.timeline}}</h2>
-                                <h2 style="color:#fff">{{session.subject.subject}}</h2>
+                                <h2 style="color:#fff;font-size:26px">{{session.timeline.timeline}}</h2>
+                                <h2 style="color:#fff;font-size:20px">{{session.subject.subject}}</h2>
                             </div>
                         </div>
                     </div>
@@ -35,8 +35,8 @@
                                 <div class="item item-icon-left" style="padding-left:90px;" ng-repeat="session in day.sessions">
                                     <div class="list">
                                         <div class="item item-icon-lef" ng-class="{'item-royal' : session.type === 'self', 'item-energized' : session.type === 'tutorial', 'item-calm' : session.type === 'lecture'}" ng-click="previewSession(session)">
-                                            <h2 style="color:#fff">{{session.timeline.timeline}}</h2>
-                                            <h2 style="color:#fff">{{session.subject.subject}}</h2>
+                                            <h2 style="color:#fff;font-size:26px">{{session.timeline.timeline}}</h2>
+                                            <h2 style="color:#fff;font-size:20px">{{session.subject.subject}}</h2>
                                         </div>
                                     </div>
                                 </div>

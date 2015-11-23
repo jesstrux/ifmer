@@ -72,9 +72,14 @@ angular.module('dent.services', [])
       var details = {};
       var times = ['0700 - 0800', '0800 - 0900', '0900 - 1000', '1000 - 1100', '1100 - 1200', '1200 - 1300', '1300 - 1400', '1400 - 1500', '1500 - 1600', '1600 - 1700', '1700 - 1800', '1800 - 1900', '1900 - 2000'];
       
-      if(session.length > 1){
+      if(session.length > 2){
         session = session.split('&');
-        details.timeline = times[parseInt(session[0])];
+        var start = times[parseInt(session[0])];
+        start = start.split('-');
+        var end = times[parseInt(session[1])];
+        end = end.split('-');
+
+        details.timeline = start[0] + ' - ' + end[1];
       }else{
         details.timeline = times[parseInt(session)];
       }
@@ -84,7 +89,6 @@ angular.module('dent.services', [])
             for (var i = 0; i < data.length; i++) {
               if(data[i].code === code){
                 details.subject = data[i].name;
-                // def.resolve(details);
               }
             };
           })
