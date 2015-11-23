@@ -27,22 +27,6 @@
         "venue":"343"   
       },
       {
-        "sub_code":"GSU07103",
-        "day" : "Monday",
-        "session" : "5",
-        "type" : "tutorial",
-        "group" : 2,
-        "venue":"346"   
-      },
-      {
-        "sub_code":"ITU07103",
-        "day" : "Monday",
-        "session" : "6",
-        "type" : "tutorial",
-        "group" : 2,
-        "venue":"111"   
-      },
-      {
         "sub_code":"CSU07101",
         "day" : "Monday",
         "session" : "7&8",
@@ -64,7 +48,15 @@
         "venue":null   
       },
       {
-        "sub_code":"CSU07102",
+        "sub_code":"GSU07103",
+        "day" : "Tuesday",
+        "session" : "2",
+        "type" : "tutorial",
+        "group" : 2,
+        "venue":116   
+      },
+      {
+        "sub_code":"GSU07102",
         "day" : "Tuesday",
         "session" : "3",
         "type" : "tutorial",
@@ -90,7 +82,7 @@
       {
         "sub_code":"ITU07103",
         "day" : "Tuesday",
-        "session" : "6",
+        "session" : "7",
         "type" : "tutorial",
         "group" : 3,
         "venue":110   
@@ -98,7 +90,7 @@
       {
         "sub_code":"ITU07103",
         "day" : "Tuesday",
-        "session" : "7",
+        "session" : "8",
         "type" : "tutorial",
         "group" : 1,
         "venue":110   
@@ -106,7 +98,7 @@
       {
         "sub_code":"MTU07104",
         "day" : "Tuesday",
-        "session" : "10&11",
+        "session" : "11&12",
         "type" : "lecture",
         "group" : null,
         "venue":"TH A"   
@@ -117,20 +109,20 @@
     "day" : "Wed",
     "sessions" :[
       {
-        "sub_code":"GSU07102",
-        "day" : "Wed",
-        "session" : "1&2",
-        "type" : "lecture",
-        "group" : null,
-        "venue":119   
-      },
-      {
         "sub_code":"ITU07103",
         "day" : "Wed",
         "session" : "3&4",
         "type" : "lecture",
         "group" : null,
         "venue":338   
+      },
+      {
+        "sub_code":"ITU07103",
+        "day" : "Wed",
+        "session" : "5",
+        "type" : "tutorial",
+        "group" : 2,
+        "venue":343   
       },
       {
         "sub_code":"GSU07103",
@@ -175,15 +167,15 @@
         "session" : "3",
         "type" : "tutorial",
         "group" : 1,
-        "venue":219   
+        "venue":112   
       },
       {
         "sub_code":"CSU07101",
         "day" : "Thu",
         "session" : "4&5",
-        "type" : "tutorial",
-        "group" : 2,
-        "venue":"LAB 4"   
+        "type" : "lecture",
+        "group" : null,
+        "venue":338
       },
       {
         "sub_code":"CSU07102",
@@ -218,9 +210,9 @@
         "sub_code":"CSU07101",
         "day" : "Fri",
         "session" : "4&5",
-        "type" : "lecture",
-        "group" : null,
-        "venue":338   
+        "type" : "tutorial",
+        "group" : 2,
+        "venue":"LAB 4"   
       },
       {
         "sub_code":"MTU07104",

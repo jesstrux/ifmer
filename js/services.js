@@ -74,14 +74,14 @@ angular.module('dent.services', [])
       
       if(session.length > 2){
         session = session.split('&');
-        var start = times[parseInt(session[0])];
+        var start = times[parseInt(session[0]) - 1];
         start = start.split('-');
-        var end = times[parseInt(session[1])];
+        var end = times[parseInt(session[1]) - 1];
         end = end.split('-');
 
         details.timeline = start[0] + ' - ' + end[1];
       }else{
-        details.timeline = times[parseInt(session)];
+        details.timeline = times[parseInt(session) - 1];
       }
 
         $http.get("js/subjects.json")
