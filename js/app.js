@@ -81,5 +81,5 @@ dent.config(function($stateProvider, $urlRouterProvider) {
     }
   });
 
-  $urlRouterProvider.otherwise('/app/schedule');
+  $urlRouterProvider.otherwise('/app/schedule/2');
 });
