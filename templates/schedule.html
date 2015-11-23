@@ -7,7 +7,7 @@
       </ion-nav-buttons>
       <div ng-switch on="which">
           <ion-content ng-switch-when="2">
-                <div class="list" ng-repeat="day in schedule">
+                <div class="list" ng-if="day.sessions.length > 0" ng-repeat="day in schedule">
                     <div class="item item-icon-left" style="padding-left:90px;" ng-repeat="session in day.sessions">
                         <i class="icon" ng-if="$index==0" style="margin-top:-10px;font-size:25px;">{{day.day.substr(0,3)}}</i>
                         <div class="list">
@@ -21,7 +21,7 @@
             </ion-content>
             <ion-content ng-switch-when="1">
                 <ion-slide-box show-pager="false">
-                    <ion-slide class="slide" ng-repeat="day in schedule" style="position: relative;">
+                    <ion-slide class="slide" ng-if="day.sessions.length > 0" ng-repeat="day in schedule" style="position: relative;">
                         <i class="icon" style="position: absolute;top:25px;left:15px;font-size:25px;">{{day.day.substr(0,3)}}</i>
                         <ion-content>
                             <div class="list">

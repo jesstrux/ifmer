@@ -234,24 +234,7 @@
   },
   {
     "day" : "Saturday",
-    "sessions" : [
-      {
-      "sub_code":"ITU07103",
-      "day" : "Sat",
-      "session" : "1",
-      "type" : "self",
-      "group" : null,
-      "venue":null   
-    },
-    {
-      "sub_code":"GSU07103",
-      "day" : "Sat",
-      "session" : "2",
-      "type" : "self",
-      "group" : null,
-      "venue":null   
-    }
-    ]
+    "sessions" : []
   },
   {
     "day" : "Sunday",
