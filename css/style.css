@@ -23,6 +23,12 @@
   font-size: 20px !important;
 }
 
+.rotated{
+    transform: rotate(-90deg);
+    /*-webkit-transition: all 0.2s ease-in-out;
+    */transition: all 0.2s ease-in-out;
+}
+
 p {
     color: #555;
     margin: 0 0 25px;
