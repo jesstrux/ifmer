@@ -5,7 +5,40 @@
         <button class="button button-icon button-clear icon ion-android-more-vertical" ng-click="mainPopover.show($event)">
         </button>
       </ion-nav-buttons>
-      <div ng-switch on="which">
+      <div class="tabs-top tabs-dark tabs-striped tabs-striped-bottom" ng-hid="searching" ng-show="which==1">
+        <div class="tabs">
+          <div class="indicator sliding" style="left:{{activeTabPosition+'px'}}; width: {{activeTabWidth}}"></div>
+          <a ng-repea="day in schedule" ng-class="{'active': activeTab === 0}" class="tab-item" ng-click="goToSlide(0)">
+            <!-- <span class="tab-title ng-binding">{{day.day.substr(0,3)}}</span> -->
+            <span class="tab-title ng-binding">Mon</span>
+          </a>
+          <a ng-class="{'active': activeTab === 1}" class="tab-item" ng-click="goToSlide(1)">
+            <!-- <span class="tab-title ng-binding">{{day.day.substr(0,3)}}</span> -->
+            <span class="tab-title ng-binding">Tue</span>
+          </a>
+          <a ng-class="{'active': activeTab === 2}" class="tab-item" ng-click="goToSlide(2)">
+            <!-- <span class="tab-title ng-binding">{{day.day.substr(0,3)}}</span> -->
+            <span class="tab-title ng-binding">Wed</span>
+          </a>
+          <a ng-class="{'active': activeTab === 3}" class="tab-item" ng-click="goToSlide(3)">
+            <!-- <span class="tab-title ng-binding">{{day.day.substr(0,3)}}</span> -->
+            <span class="tab-title ng-binding">Thu</span>
+          </a>
+          <a ng-class="{'active': activeTab === 4}" class="tab-item" ng-click="goToSlide(4)">
+            <!-- <span class="tab-title ng-binding">{{day.day.substr(0,3)}}</span> -->
+            <span class="tab-title ng-binding">Fri</span>
+          </a>
+          <a ng-class="{'active': activeTab === 5}" class="tab-item" ng-click="goToSlide(5)">
+            <!-- <span class="tab-title ng-binding">{{day.day.substr(0,3)}}</span> -->
+            <span class="tab-title ng-binding">Sat</span>
+          </a>
+          <a ng-class="{'active': activeTab === 6}" class="tab-item" ng-click="goToSlide(6)">
+            <!-- <span class="tab-title ng-binding">{{day.day.substr(0,3)}}</span> -->
+            <span class="tab-title ng-binding">Sun</span>
+          </a>
+        </div>
+    </div>
+      <div  ng-switch on="which">
           <ion-content ng-switch-when="2">
                 <div class="list" ng-if="day.sessions.length > 0" ng-repeat="day in schedule">
                     <div class="item item-icon-left" style="padding-left:90px;" ng-repeat="session in day.sessions">
@@ -19,20 +52,20 @@
                     </div>
                 </div>
             </ion-content>
-            <ion-content ng-switch-when="1">
-                <ion-slide-box show-pager="false">
-                    <ion-slide class="slide" ng-if="day.sessions.length > 0" ng-repeat="day in schedule" style="position: relative;">
-                        <i class="icon" style="position: absolute;top:25px;left:15px;font-size:25px;">{{day.day.substr(0,3)}}</i>
+            <ion-content class="has-tabs-top" ng-switch-when="1">
+                <ion-slide-box show-pager="false" on-slide-changed="slideChanged(index)">
+                    <ion-slide class="slide" ng-i="day.sessions.length > 0" ng-repeat="day in schedule" style="position: relative;">
+                        <!-- <i class="icon" style="position: absolute;top:25px;left:15px;font-size:25px;">{{day.day.substr(0,3)}}</i> -->
                         <ion-content>
                             <div class="list">
-                                <div class="item item-icon-left" style="padding-left:90px;margin-to:10px" ng-if="day.sessions.length < 1">
+                                <div class="item item-icon-lef" styl="padding-left:90px;" ng-if="day.sessions.length < 1">
                                     <div class="list">
                                         <div class="item">
                                             <h2>No sessions on this day.</h2>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="item item-icon-left" style="padding-left:90px;" ng-repeat="session in day.sessions">
+                                <div class="item item-icon-lef" styl="padding-left:90px;" ng-repeat="session in day.sessions">
                                     <div class="list">
                                         <div class="item item-icon-lef" ng-class="{'item-royal' : session.type === 'self', 'item-energized' : session.type === 'tutorial', 'item-calm' : session.type === 'lecture'}" ng-click="previewSession(session)">
                                             <h2 style="color:#fff;font-size:26px">{{session.timeline.timeline}}</h2>

@@ -1,4 +1,48 @@
 /* Empty. Add your own CSS if you like */
+.tabs-striped .tabs{
+    top:38px !important;
+    overflow: visible;
+    /*background: #607d8b;*/
+    color: #fefefe;
+    /*border-bottom: 0;*/
+    /*background: #CDDC39;color: #fefefe;*/
+    /*border-top-color: transparent;*/
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
+}
+.tabs-striped .tabs .indicator{
+    position: absolute;bottom:0px;left: 0;
+    content: " ";
+    width: 15px;
+    height:2px;
+    background-color: #fefefe;
+}
+
+.indicator.sliding{
+   -webkit-transition: all .5s ease-in-out;
+    -o-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+}
+
+.list .item{
+  border: 0;
+}
+
+.tab-item{
+  font-size: 17px;
+}
+.tab-item.active{
+    margin-top: 0 !important;;
+    border-width: 0 !important;;
+    border-style: none !important;;
+}
+.tab-item.activated{
+    margin-top: 0 !important;;
+    border-width: 0 !important;;
+    border-style: none !important;;
+}
+.bar{
+    box-shadow:none;
+}
 .menu-open .ion-android-menu{
     transform: rotate(-360deg);
     -webkit-transition: all 0.2s ease-in-out;
@@ -20,9 +64,18 @@
 .bar .title{
   position: relative;
   left:5px !important;
+  top: -5px;
   font-size: 20px !important;
 }
 
+.bar .button {
+    min-height: 38px;
+    min-width: 40px;
+    max-width: 44px;
+    margin-bottom: 0;
+    max-height: 40px;
+    width: 44px;
+}
 .rotated{
     transform: rotate(-90deg);
     /*-webkit-transition: all 0.2s ease-in-out;

@@ -66,7 +66,7 @@ dent.config(function($stateProvider, $urlRouterProvider) {
   // })
 
   .state('app.schedule', {
-    url: '/schedule/:daily',
+    url: '/schedule',
     views: {
       'menuContent': {
         templateUrl: 'templates/schedule.html',
@@ -81,5 +81,5 @@ dent.config(function($stateProvider, $urlRouterProvider) {
     }
   });
 
-  $urlRouterProvider.otherwise('/app/schedule/2');
+  $urlRouterProvider.otherwise('/app/schedule');
 });

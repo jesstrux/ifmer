@@ -60,13 +60,31 @@ angular.module('dent.controllers', [])
   $scope.subject = subject;
 })
 
-.controller("ScheduleCtrl", function($scope, $stateParams, $ionicSlideBoxDelegate, $ionicModal, schedule, Subjects) {
+.controller("ScheduleCtrl", function($scope, $timeout, $stateParams, $ionicSlideBoxDelegate, $ionicModal, schedule, Subjects) {
   $scope.schedule = schedule;
   $scope.session = {};
-  $scope.which = $stateParams.daily;
+  $scope.which = 1;
+  $scope.activeTab = 0;
+  // $stateParams.daily
+  var vm = this;
 
-  // if($stateParams.daily)
-  // console.log($stateParams.daily);
+  vm.setActiveTabPosition = function(index){
+      var width = $('.tab-item').eq(index).css('width');
+      var position = $('.tab-item').eq(index).position();
+      $scope.activeTabPosition = position.left;
+      $scope.activeTabWidth = width;
+      $scope.activeTab = index;
+  }
+  vm.setActiveTabPosition(0);
+
+  window.onresize = function onresize() {
+    $('.indicator').removeClass('sliding');
+    vm.setActiveTabPosition($scope.activeTab);
+
+    $timeout(function(){
+      $('.indicator').addClass('sliding');
+    }, 200);
+  }
 
   $ionicModal.fromTemplateUrl('templates/session.html', {
     scope: $scope,
@@ -82,4 +100,13 @@ angular.module('dent.controllers', [])
   $scope.closeSession = function() {
     $scope.modal.hide();
   };
+
+  $scope.goToSlide = function(index){
+      $ionicSlideBoxDelegate.slide(index, 500);
+  }
+
+  $scope.slideChanged = function(index){
+      $scope.curPos = index;
+      vm.setActiveTabPosition(index);
+  }
 });
