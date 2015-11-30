@@ -65,7 +65,7 @@
   position: relative;
   left:5px !important;
   top: -5px;
-  font-size: 20px !important;
+  font-size: 22px !important;
 }
 
 .bar .button {
@@ -74,7 +74,13 @@
     max-width: 44px;
     margin-bottom: 0;
     max-height: 40px;
-    width: 44px;
+    /*width: 44px;*/
+}
+
+.bar .back-button {
+    min-height: 38px;
+    min-width: 15px;
+    max-width: 15px;
 }
 .rotated{
     transform: rotate(-90deg);

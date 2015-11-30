@@ -66,25 +66,6 @@ angular.module('dent.controllers', [])
   $scope.which = 1;
   $scope.activeTab = 0;
   // $stateParams.daily
-  var vm = this;
-
-  vm.setActiveTabPosition = function(index){
-      var width = $('.tab-item').eq(index).css('width');
-      var position = $('.tab-item').eq(index).position();
-      $scope.activeTabPosition = position.left;
-      $scope.activeTabWidth = width;
-      $scope.activeTab = index;
-  }
-  vm.setActiveTabPosition(0);
-
-  window.onresize = function onresize() {
-    $('.indicator').removeClass('sliding');
-    vm.setActiveTabPosition($scope.activeTab);
-
-    $timeout(function(){
-      $('.indicator').addClass('sliding');
-    }, 200);
-  }
 
   $ionicModal.fromTemplateUrl('templates/session.html', {
     scope: $scope,
@@ -107,6 +88,6 @@ angular.module('dent.controllers', [])
 
   $scope.slideChanged = function(index){
       $scope.curPos = index;
-      vm.setActiveTabPosition(index);
+      // vm.setActiveTabPosition(index);
   }
 });

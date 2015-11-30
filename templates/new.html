@@ -1,0 +1,43 @@
+<ion-view title="Schedule">
+  <ion-content scroll="false">
+    <tab-slide-box>
+      <div class="tsb-icons">
+        <div class="tsb-ic-wrp">
+          <ion-scroll direction="x" class="tsb-hscroll">
+            <a ripple href="javascript:;" >MONDAY</a>
+            <a ripple href="javascript:;" >TUESDAY</a>
+            <a ripple href="javascript:;" >WEDNESDAY</a>
+            <a ripple href="javascript:;" >THURSDAY</a>
+            <a ripple href="javascript:;" >FRIDAY</a>
+            <a ripple href="javascript:;" >SATURDAY</a>
+            <a ripple href="javascript:;" >SUNDAY</a>
+          </ion-scroll>
+        </div>
+      </div>
+      <ion-slide-box show-pager="false" on-slide-changed="slideHasChanged($index)">
+        <ion-slide class="slide" ng-i="day.sessions.length > 0" ng-repeat="day in schedule">
+          <!-- <i class="icon" style="position: absolute;top:25px;left:15px;font-size:25px;">{{day.day.substr(0,3)}}</i> -->
+          <ion-content>
+              <div class="list" style="padding-bottom:50px">
+                  <div class="item item-icon-lef" styl="padding-left:90px;" ng-if="day.sessions.length < 1">
+                      <div class="list">
+                          <div class="item">
+                              <h2>No sessions on this day.</h2>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="item item-icon-lef" styl="padding-left:90px;" ng-repeat="session in day.sessions">
+                      <div class="list">
+                          <div class="item item-icon-lef" ng-class="{'item-royal' : session.type === 'self', 'item-energized' : session.type === 'tutorial', 'item-calm' : session.type === 'lecture'}" ng-click="previewSession(session)">
+                              <h2 style="color:#fff;font-size:26px">{{session.timeline.timeline}}</h2>
+                              <h2 style="color:#fff;font-size:20px">{{session.subject.subject}}</h2>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </ion-content>
+      </ion-slide>
+      </ion-slide-box>
+    </tab-slide-box>
+  </ion-content>
+</ion-view>

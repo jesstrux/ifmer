@@ -1,4 +1,4 @@
-var dent = angular.module('dent', ['ionic', 'jett.ionic.filter.bar', 'dent.controllers', 'dent.services']);
+var dent = angular.module('dent', ['ionic', 'tabSlideBox','ionicRipple', 'jett.ionic.filter.bar', 'dent.controllers', 'dent.services']);
 
 dent.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -69,7 +69,7 @@ dent.config(function($stateProvider, $urlRouterProvider) {
     url: '/schedule',
     views: {
       'menuContent': {
-        templateUrl: 'templates/schedule.html',
+        templateUrl: 'templates/new.html',
         controller: 'ScheduleCtrl'
       }
     },
