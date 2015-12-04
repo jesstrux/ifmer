@@ -1,4 +1,4 @@
-var dent = angular.module('dent', ['ionic', 'tabSlideBox','ionicRipple', 'jett.ionic.filter.bar', 'dent.controllers', 'dent.services']);
+var dent = angular.module('dent', ['ionic', 'tabSlideBox','ionicRipple', 'ionMdInput', 'jett.ionic.filter.bar', 'dent.controllers', 'dent.services', 'LocalForageModule']);
 
 dent.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -14,7 +14,10 @@ dent.run(function($ionicPlatform) {
   });
 })
 
-dent.config(function($stateProvider, $urlRouterProvider) {
+dent.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+  // Turn off caching to allow refreshing of pages esp after coming from settings page
+  $ionicConfigProvider.views.maxCache(0);
+
   $stateProvider
 
     .state('app', {
@@ -33,50 +36,41 @@ dent.config(function($stateProvider, $urlRouterProvider) {
       }
     }
   })
-  .state('app.subject', {
-    url: '/subjects/:code',
-    // url: '/subject',
+  .state('app.settings', {
+    url: '/settings',
     views: {
       'menuContent': {
-        templateUrl: 'templates/subject.html',
-        controller: 'SubjectCtrl'
-      }
-    },
-    resolve: {
-      subject: function(Subjects, $stateParams) {
-        var code = $stateParams.code;
-        return Subjects.get(code);
+        templateUrl: 'templates/settings.html',
+        controller: 'SettingsCtrl'
       }
     }
   })
-  // .state('app.schedule', {
-  //   url: '/schedule',
-  //   views: {
-  //     'menuContent': {
-  //       templateUrl: 'templates/schedule.html',
-  //       controller: 'ScheduleCtrl'
-  //     }
-  //   },
-  //   resolve: {
-  //     schedule: function(Schedule, $stateParams) {
-  //       // var code = $stateParams.code;
-  //       return Schedule.full();
-  //     }
-  //   }
-  // })
 
   .state('app.schedule', {
     url: '/schedule',
     views: {
       'menuContent': {
-        templateUrl: 'templates/new.html',
+        templateUrl: 'templates/schedule.html',
         controller: 'ScheduleCtrl'
       }
     },
     resolve: {
-      schedule: function(Schedule, $stateParams) {
-        // var code = $stateParams.code;
-        return Schedule.full();
+      schedule: function($localForage, Schedule) {
+        var schedule, settings, filterGroups, group;
+        // console.log($scope.settings);
+        return $localForage.getItem('__SETTINGS__').then(function(loadedSettings) {
+          // console.log(settings);
+          if (loadedSettings) {
+            settings = loadedSettings;
+            filterGroups = !settings.allGroups;
+            group = settings.group;
+          }else{
+            filterGroups = false;
+            group = null;
+          }
+
+          return Schedule.full(filterGroups, group);
+        });
       }
     }
   });

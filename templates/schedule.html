@@ -7,7 +7,7 @@
       </ion-nav-buttons>
       <div class="tabs-top tabs-dark tabs-striped tabs-striped-bottom" ng-hid="searching" ng-show="which==1">
         <div class="tabs">
-          <div class="indicator sliding" style="left:{{activeTabPosition+'px'}}; width: {{activeTabWidth}}"></div>
+          <div class="indicator" style="left:{{activeTabPosition+'px'}}; width: {{activeTabWidth}}"></div>
           <a ng-repea="day in schedule" ng-class="{'active': activeTab === 0}" class="tab-item" ng-click="goToSlide(0)">
             <!-- <span class="tab-title ng-binding">{{day.day.substr(0,3)}}</span> -->
             <span class="tab-title ng-binding">Mon</span>
@@ -65,11 +65,13 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="item item-icon-lef" styl="padding-left:90px;" ng-repeat="session in day.sessions">
+                                <div class="item item-icon-lef" styl="padding-left:90px;" ng-repeat="session in day.sessions | filter : {invalid : false}">
                                     <div class="list">
                                         <div class="item item-icon-lef" ng-class="{'item-royal' : session.type === 'self', 'item-energized' : session.type === 'tutorial', 'item-calm' : session.type === 'lecture'}" ng-click="previewSession(session)">
                                             <h2 style="color:#fff;font-size:26px">{{session.timeline.timeline}}</h2>
                                             <h2 style="color:#fff;font-size:20px">{{session.subject.subject}}</h2>
+
+                                            <!-- <h2 style="color:#fff;font-size:20px">{{session.invalid}}</h2> -->
                                         </div>
                                     </div>
                                 </div>

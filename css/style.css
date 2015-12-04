@@ -12,15 +12,15 @@
 .tabs-striped .tabs .indicator{
     position: absolute;bottom:0px;left: 0;
     content: " ";
-    width: 15px;
+    width: 1px;
     height:2px;
     background-color: #fefefe;
 }
 
 .indicator.sliding{
-   -webkit-transition: all .5s ease-in-out;
-    -o-transition: all .5s ease-in-out;
-    transition: all .5s ease-in-out;
+ -webkit-transition: all .35s ease-in-out;
+  -o-transition: all .35s ease-in-out;
+  transition: all .35s ease-in-out;
 }
 
 .list .item{

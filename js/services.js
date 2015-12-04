@@ -40,11 +40,12 @@ angular.module('dent.services', [])
 }])
 .factory('Schedule', ['$http', '$q', function($http, $q, Subjects) {
     return {
-        full: function() {
+        full: function(filterGroups, group) {
             var def = $q.defer();
             var days = [];
             $http.get("js/schedule.json")
               .success(function(data) {
+                var validSessions = 0;
                 for (var i = 0; i < data.length; i++) {
                   // console.log(data[i]);
                   if(i>=data.length - 1){
@@ -54,6 +55,15 @@ angular.module('dent.services', [])
                     for (var j = 0; j < sessions.length; j++) {
                       data[i].sessions[j].subject = getDetails(sessions[j].sub_code, false);
                       data[i].sessions[j].timeline = getDetails(false, sessions[j].session);
+                      data[i].sessions[j].invalid = false;
+
+                      if(filterGroups){
+                        if (sessions[j].type === 'tutorial') {
+                          if(sessions[j].group !== parseInt(group)){
+                            data[i].sessions[j].invalid = true;
+                          }
+                        }
+                      }
                     };
                   }
                 };
