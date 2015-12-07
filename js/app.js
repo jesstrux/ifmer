@@ -1,4 +1,4 @@
-var dent = angular.module('dent', ['ionic', 'tabSlideBox','ionicRipple', 'ionMdInput', 'jett.ionic.filter.bar', 'dent.controllers', 'dent.services', 'LocalForageModule']);
+var dent = angular.module('dent', ['ionic', 'tabSlideBox','ionicRipple', 'ionMdInput', 'jett.ionic.filter.bar', 'dent.controllers', 'dent.services']);
 
 dent.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -55,22 +55,22 @@ dent.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
       }
     },
     resolve: {
-      schedule: function($localForage, Schedule) {
+      schedule: function(Schedule) {
         var schedule, settings, filterGroups, group;
         // console.log($scope.settings);
-        return $localForage.getItem('__SETTINGS__').then(function(loadedSettings) {
-          // console.log(settings);
-          if (loadedSettings) {
-            settings = loadedSettings;
-            filterGroups = !settings.allGroups;
-            group = settings.group;
-          }else{
-            filterGroups = false;
-            group = null;
-          }
 
-          return Schedule.full(filterGroups, group);
-        });
+        var localSettings = window.localStorage.getItem('mySettings');
+
+        if(localSettings){
+          settings = JSON.parse(localStorage.mySettings);;
+          filterGroups = !settings.allGroups;
+          group = settings.group;
+        }else{
+          filterGroups = false;
+          group = null;
+        }
+
+        return Schedule.full(filterGroups, group);
       }
     }
   });

@@ -1,7 +1,7 @@
 var db = null;
 angular.module('dent.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $location, $ionicPopover, $timeout, $localForage) {
+.controller('AppCtrl', function($scope, $ionicModal, $location, $ionicPopover, $timeout) {
 
   $scope.navigateTo = function(path){
       $scope.closeMainPopover();
@@ -49,31 +49,35 @@ angular.module('dent.controllers', [])
       $scope.$broadcast('settingsChanged');
     // }
   };
+
+  // $timeout(function(){
+  //   $('#screen').fadeOut('slow');
+  // }, 2000);
 })
 
-.controller('SettingsCtrl', function($scope, $localForage){  
-  $localForage.getItem('__SETTINGS__').then(function(settings) {
-    // console.log(settings);
-    if (settings) {
-      $scope.settings = settings;
-      // vm.updateTasksStatus();
-    }else{
-      var initSettings = {
-        allGroups : false,
-        stream : 'A',
-        group : 1
-      }
+.controller('SettingsCtrl', function($scope){  
+  var localSettings = window.localStorage.getItem('mySettings');
 
-      $localForage.setItem('__SETTINGS__', initSettings).then(function() {
-        $scope.settings = settings;
-      });
+  if(localSettings){
+    localSettings = JSON.parse(localStorage.mySettings);
+
+    $scope.settings = localSettings;
+    console.log(localSettings);
+  }else{
+    console.log('no localSettings found');
+    
+    var initSettings = {
+      allGroups : false,
+      stream : 'A',
+      group : 1
     }
-  });
+
+    window.localStorage.setItem('mySettings', JSON.stringify(initSettings));
+    $scope.settings = initSettings;
+  }
 
   $scope.updateSettings = function(){
-    $localForage.setItem('__SETTINGS__', $scope.settings).then(function() {
-      // window.reload();
-    });
+    window.localStorage.setItem('mySettings', JSON.stringify($scope.settings));
   }
 })
 
@@ -169,6 +173,7 @@ angular.module('dent.controllers', [])
   $timeout(function(){
     $ionicSlideBoxDelegate.slide($scope.curPos, 350);
     $timeout(function(){
+      vm.setActiveTabPosition($scope.curPos);
       $('.indicator').addClass('sliding');
     }, 100);
   }, 100);
