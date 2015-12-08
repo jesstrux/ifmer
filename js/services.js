@@ -4,12 +4,9 @@ angular.module('dent.services', [])
     return {
         all: function() {
             var def = $q.defer();
-            // var subjects = [];
 
             $http.get("js/subjects.json")
               .success(function(data) {
-                // subjects.push(data[i]);
-                console.log(data);
                 def.resolve(data);
               })
               .error(function() {

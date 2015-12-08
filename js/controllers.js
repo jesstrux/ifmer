@@ -1,4 +1,3 @@
-var db = null;
 angular.module('dent.controllers', [])
 
 .controller('AppCtrl', function($scope, $ionicModal, $location, $ionicPopover, $timeout) {
@@ -6,7 +5,6 @@ angular.module('dent.controllers', [])
   $scope.navigateTo = function(path){
       $scope.closeMainPopover();
       $location.path(path);
-      // $state.go(path);
   };
 
   $scope.whatsActive = function(isItMe){
@@ -29,7 +27,6 @@ angular.module('dent.controllers', [])
 
   $ionicModal.fromTemplateUrl('templates/settings.html', {
     scope: $scope
-    // animation: 'slide-left'
   }).then(function(modal) {
     $scope.settingsModal = modal;
   });
@@ -37,22 +34,12 @@ angular.module('dent.controllers', [])
   $scope.showSettings = function(){
     $scope.closeMainPopover();
     $scope.settingsModal.show();
-
-    // $localForage.getItem('__SETTINGS__').then(function(oldSetttings){
-    //   $scope.oldSetttings = oldSetttings;
-    // });
   }
   $scope.closeSettings = function(){
     $scope.settingsModal.hide();
     
-    // if($scope.oldSetttings !== $scope.settings){
-      $scope.$broadcast('settingsChanged');
-    // }
+    $scope.$broadcast('settingsChanged');
   };
-
-  // $timeout(function(){
-  //   $('#screen').fadeOut('slow');
-  // }, 2000);
 })
 
 .controller('SettingsCtrl', function($scope){  
@@ -120,8 +107,7 @@ angular.module('dent.controllers', [])
       },
       cancel: function () {
         $scope.searching = false;
-      },
-      // filterProperties: 'name'
+      }
     });
   };
   
@@ -146,13 +132,6 @@ angular.module('dent.controllers', [])
   $scope.which = 1;
   $scope.activeTab = 0;
   $scope.curPos = date.getDay() - 1;
-
-  $scope.$on('settingsChanged', function(){
-    // reload schedule
-    // Schedule.full().then(function(schedule){
-    //   $scope.schedule = schedule;
-    // });
-  });
 
   vm.setActiveTabPosition = function(index){
       var width = $('.tab-item').eq(index).css('width');

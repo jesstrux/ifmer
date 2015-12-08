@@ -63,7 +63,7 @@
 
 .bar .title{
   position: relative;
-  left:5px !important;
+  left:25px !important;
   top: -5px;
   font-size: 22px !important;
 }
@@ -71,7 +71,7 @@
 .bar .button {
     min-height: 38px;
     min-width: 40px;
-    max-width: 44px;
+    max-width: 54px;
     margin-bottom: 0;
     max-height: 40px;
     /*width: 44px;*/
