@@ -22,9 +22,9 @@
           </ion-scroll>
         </div>
       </div>
+      <div class="shadow-div"></div>
       <ion-slide-box show-pager="false" on-slide-changed="slideHasChanged($index)">
         <ion-slide class="slide" ng-i="day.sessions.length > 0" ng-repeat="day in schedule">
-          <!-- <i class="icon" style="position: absolute;top:25px;left:15px;font-size:25px;">{{day.day.substr(0,3)}}</i> -->
           <ion-content>
               <div class="list" style="padding-bottom:50px">
                   <div class="item item-icon-lef" styl="padding-left:90px;" ng-if="day.sessions.length < 1">

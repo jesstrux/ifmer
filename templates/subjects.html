@@ -9,7 +9,7 @@
         <div class="padding-vertical">
             <div class="list list-inset item-balanced" ng-repeat="subject in subjects" ng-click="previewSubject(subject)">
             	<div class="item item-icon-left subject">
-                    <i class="icon avatarish" ng-class="'icon-'+item.theme">
+                    <i class="icon avatarish" ng-class="'icon-'+subject.theme">
                         {{subject.shortname}}
                     </i>
             		<h2>{{subject.name}}</h2>
