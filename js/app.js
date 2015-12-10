@@ -50,7 +50,7 @@ dent.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
     url: '/schedule',
     views: {
       'menuContent': {
-        templateUrl: 'templates/schedule.html',
+        templateUrl: 'templates/new.html',
         controller: 'ScheduleCtrl'
       }
     },

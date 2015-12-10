@@ -63,29 +63,29 @@
 
 .bar .title{
   position: relative;
-  left:25px !important;
+  left:5px !important;
   top: -5px;
   font-size: 22px !important;
 }
 
 .bar .button {
+    top: -3px;
     min-height: 38px;
     min-width: 40px;
     max-width: 54px;
     margin-bottom: 0;
     max-height: 40px;
-    /*width: 44px;*/
 }
 
 .bar .back-button {
     min-height: 38px;
-    min-width: 15px;
-    max-width: 15px;
+    min-width: 40px;
+    max-width: 54px;
 }
 .rotated{
     transform: rotate(-90deg);
-    /*-webkit-transition: all 0.2s ease-in-out;
-    */transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
 }
 
 p {
@@ -102,7 +102,39 @@ p {
     height: 100%;
     width: 100%;
 }
-
+.item.subject{
+  padding-left: 80px;min-height: 72px;
+}
+.item.subject:first-child{
+  margin-top: -20px;
+}
+.item.subject h2{
+  font-size: 1.3rem;font-weight:300;
+}
+.item.subject h3{
+  font-size: 1.1rem;
+}
+.item.subject p{
+  font-size: 1rem;
+}
+.icon.avatarish{
+  background:#eee;
+  border-radius: 50%;display:block;
+  text-transform:uppercase;text-align: center;font-size:25px;
+  left:0;top:20px;width:72px;height:72px;line-height:72px;
+}
+.icon.avatarish.icon-balanced{
+  background:#33cd5f;
+  color: #fefefe;
+}
+.icon.avatarish.icon-positive{
+  background:#387ef5;
+  color: #eee;
+}
+.icon.avatarish.icon-assertive{
+  background:#ef473a;
+  color: #eee;
+}
 .fade-in {
   -webkit-transform: scale(0.0);
   transform: scale(0.0);

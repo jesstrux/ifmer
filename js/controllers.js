@@ -54,7 +54,7 @@ angular.module('dent.controllers', [])
     console.log('no localSettings found');
     
     var initSettings = {
-      allGroups : false,
+      allGroups : true,
       stream : 'A',
       group : 1
     }
@@ -131,31 +131,31 @@ angular.module('dent.controllers', [])
   $scope.session = {};
   $scope.which = 1;
   $scope.activeTab = 0;
-  $scope.curPos = date.getDay() - 1;
+  // $scope.curPos = date.getDay() - 1;
 
-  vm.setActiveTabPosition = function(index){
-      var width = $('.tab-item').eq(index).css('width');
-      var position = $('.tab-item').eq(index).position();
-      $scope.activeTabPosition = position.left;
-      $scope.activeTabWidth = width;
-      $scope.activeTab = index;
-  }
+  // vm.setActiveTabPosition = function(index){
+  //     var width = $('.tab-item').eq(index).css('width');
+  //     var position = $('.tab-item').eq(index).position();
+  //     $scope.activeTabPosition = position.left;
+  //     $scope.activeTabWidth = width;
+  //     $scope.activeTab = index;
+  // }
 
-  window.onresize = function onresize() {
-    $('.indicator').removeClass('sliding');
-    vm.setActiveTabPosition($scope.curPos);
-    $timeout(function(){
-      $('.indicator').addClass('sliding');
-    }, 100);
-  }
+  // window.onresize = function onresize() {
+  //   $('.indicator').removeClass('sliding');
+  //   vm.setActiveTabPosition($scope.curPos);
+  //   $timeout(function(){
+  //     $('.indicator').addClass('sliding');
+  //   }, 100);
+  // }
 
-  $timeout(function(){
-    $ionicSlideBoxDelegate.slide($scope.curPos, 350);
-    $timeout(function(){
-      vm.setActiveTabPosition($scope.curPos);
-      $('.indicator').addClass('sliding');
-    }, 100);
-  }, 100);
+  // $timeout(function(){
+  //   $ionicSlideBoxDelegate.slide($scope.curPos, 350);
+  //   $timeout(function(){
+  //     vm.setActiveTabPosition($scope.curPos);
+  //     $('.indicator').addClass('sliding');
+  //   }, 100);
+  // }, 100);
 
   $ionicModal.fromTemplateUrl('templates/session.html', {
     scope: $scope,

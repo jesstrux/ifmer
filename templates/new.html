@@ -1,4 +1,12 @@
 <ion-view title="Schedule">
+  <ion-nav-buttons side="right">
+    <!-- <button class="button button-icon button-clear icon ion-android-search" ng-click="search()">
+        </button> -->
+    <button class="button button-icon button-clear icon ion-android-calendar">
+    </button>
+    <button class="button button-icon button-clear icon ion-android-more-vertical" ng-click="mainPopover.show($event)">
+    </button>
+  </ion-nav-buttons>
   <ion-content scroll="false" style="margin-top:-8px">
     <tab-slide-box>
       <div class="tsb-icons">
@@ -26,7 +34,7 @@
                           </div>
                       </div>
                   </div>
-                  <div class="item item-icon-lef" styl="padding-left:90px;" ng-repeat="session in day.sessions">
+                  <div class="item item-icon-lef" styl="padding-left:90px;" ng-repeat="session in day.sessions | filter : {invalid : false}">
                       <div class="list">
                           <div class="item item-icon-lef" ng-class="{'item-royal' : session.type === 'self', 'item-energized' : session.type === 'tutorial', 'item-calm' : session.type === 'lecture'}" ng-click="previewSession(session)">
                               <h2 style="color:#fff;font-size:26px">{{session.timeline.timeline}}</h2>

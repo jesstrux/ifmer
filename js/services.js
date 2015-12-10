@@ -10,7 +10,7 @@ angular.module('dent.services', [])
                 def.resolve(data);
               })
               .error(function() {
-                  def.reject("Failed to get cards");
+                  def.reject("Failed to get subjects");
               });
 
             return def.promise;
@@ -28,7 +28,7 @@ angular.module('dent.services', [])
                 };
               })
               .error(function() {
-                  def.reject("Failed to get cards");
+                  def.reject("Failed to get subjects");
               });
 
             return def.promise;
@@ -100,7 +100,7 @@ angular.module('dent.services', [])
             };
           })
           .error(function() {
-              def.reject("Failed to get cards");
+              def.reject("Failed to get subjects");
           });
 
       return details;

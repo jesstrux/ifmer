@@ -1,5 +1,5 @@
 <ion-modal-view>
-  <ion-header-bar class="bar-balanced" style="height:200px" ng-class="{'bar-royal' : session.type === 'self', 'bar-energized' : session.type === 'tutorial', 'bar-calm' : session.type === 'lecture'}">
+  <ion-header-bar style="height:200px" ng-class="'bar-'+subject.theme">
     <div class="buttons buttons-left">
       <span class="left-buttons">
         <button class="button button-clear icon ion-android-close" ng-click="closeSubject()"></button>

@@ -1,18 +1,22 @@
 <ion-view title="Subjects">
     <ion-nav-buttons side="right">
-        <button class="button button-icon button-clear icon ion-android-search" ng-click="search()">
-        </button>
+        <!-- <button class="button button-icon button-clear icon ion-android-search" ng-click="search()">
+        </button> -->
         <button class="button button-icon button-clear icon ion-android-more-vertical" ng-click="mainPopover.show($event)">
         </button>
     </ion-nav-buttons>
     <ion-content>
-        <!-- <div class="list"> -->
-            <div class="list card item-balanced" ng-repeat="subject in subjects" ng-click="previewSubject(subject)">
-            	<div class="item">
+        <div class="padding-vertical">
+            <div class="list list-inset item-balanced" ng-repeat="subject in subjects" ng-click="previewSubject(subject)">
+            	<div class="item item-icon-left subject">
+                    <i class="icon avatarish" ng-class="'icon-'+item.theme">
+                        {{subject.shortname}}
+                    </i>
             		<h2>{{subject.name}}</h2>
-	                <p>{{subject.code}}</p>
+                    <h3>{{subject.code}}</h3>
+	                <p>{{subject.tutor}}</p>
             	</div>
             </div>
-        <!-- </div> -->
+        </div>
     </ion-content>
 </ion-view>
