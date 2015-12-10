@@ -63,7 +63,7 @@
 
 .bar .title{
   position: relative;
-  left:5px !important;
+  /*left:1px !important;*/
   top: -5px;
   font-size: 22px !important;
 }
@@ -109,7 +109,7 @@ p {
   margin-top: -20px;
 }
 .item.subject h2{
-  font-size: 1.3rem;font-weight:300;
+  font-size: 1.2rem;font-weight:300;
 }
 .item.subject h3{
   font-size: 1.1rem;

@@ -7,6 +7,14 @@ angular.module('dent.services', [])
 
             $http.get("js/subjects.json")
               .success(function(data) {
+                for (var i = 0; i < data.length; i++) {
+                  if(data[i].credits === 10)
+                    data[i].theme = 'positive';
+                  else if(data[i].credits > 10)
+                    data[i].theme = 'assertive';
+                  else
+                    data[i].theme = 'balanced';
+                };
                 def.resolve(data);
               })
               .error(function() {
