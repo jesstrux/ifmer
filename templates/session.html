@@ -1,24 +1,20 @@
-<ion-modal-view>
-  <ion-header-bar style="height:200px" ng-class="{'bar-royal' : session.type === 'self', 'bar-energized' : session.type === 'tutorial', 'bar-calm' : session.type === 'lecture'}">
-    <div class="buttons buttons-left">
-      <span class="left-buttons">
-        <button class="button button-clear icon ion-android-close" ng-click="closeSession()"></button>
-      </span>
-    </div>
-    <h1 class="title" style="top:100px;height:120px;font-size:30px">
+<ion-modal-view class="fade">
+  <ion-header-bar ng-class="{'bar-energized' : session.type === 'tutorial', 'bar-royal' : session.type === 'self', 'bar-balanced' : session.type === 'lecture'}" style="height:70px !important;box-shadow:0 0 4px 0 rgba(0,0,0,.16),0 0 2px 0 rgba(0,0,0,.12);">
+    <div class="title header-item" style="font-size:1.2rem !important;overflow:visible;left:5px;margin-top:-9px;">
       {{session.subject.subject}}
-      <p style="color:#fff">{{session.type}}</p>
-    </h1>
+      <p style="font-size:1rem;margin-top:-40px;colo:#999">{{session.type}}</p>
+    </div>
+    <!-- {{session.subject.subject || 'Communication Skills'}} -->
   </ion-header-bar>
-  <ion-content style="top:200px">
+  <ion-content style="top:75px">
     <div class="list" style="margin:0">
       <div class="item item-icon-left">
           <i class="icon ion-clock" style="font-size:20px;"></i>
           <h2>{{session.timeline.timeline}}</h2>
       </div>
-      <div class="item item-icon-left" ng-if="session.type!=='self'">
+      <div class="item item-icon-left">
           <i class="icon ion-location" style="font-size:20px;"></i>
-          <h2>{{session.venue}}</h2>
+          <h2>{{session.venue || 'Anywhere'}}</h2>
       </div>
       <div class="item item-icon-left" ng-if="session.type==='tutorial'">
           <i class="icon ion-android-people" style="font-size:20px;"></i>

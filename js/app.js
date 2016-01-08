@@ -40,7 +40,7 @@ dent.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
     url: '/settings',
     views: {
       'menuContent': {
-        templateUrl: 'templates/settings.html',
+        templateUrl: 'templates/settings2.html',
         controller: 'SettingsCtrl'
       }
     }
@@ -57,8 +57,6 @@ dent.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
     resolve: {
       schedule: function(Schedule) {
         var schedule, settings, filterGroups, group;
-        // console.log($scope.settings);
-
         var localSettings = window.localStorage.getItem('mySettings');
 
         if(localSettings){

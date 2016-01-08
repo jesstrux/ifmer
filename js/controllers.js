@@ -42,18 +42,24 @@ angular.module('dent.controllers', [])
   };
 })
 
-.controller('SettingsCtrl', function($scope){  
+.controller('SettingsCtrl', function($scope, $ionicModal){  
   var localSettings = window.localStorage.getItem('mySettings');
+  $scope.groups = [null, 'One', 'Two', 'Three'];
+  $scope.currentGroup;
+  $ionicModal.fromTemplateUrl('templates/group-choices.html', {
+    scope: $scope,
+    animation: 'fade-in'
+  }).then(function(modal) {
+    $scope.modal = modal;
+  });
 
   if(localSettings){
     localSettings = JSON.parse(localStorage.mySettings);
 
     $scope.settings = localSettings;
-    console.log(localSettings);
+    $scope.currentGroup = $scope.groups[$scope.settings.group];
   }else{
-    console.log('no localSettings found');
-    
-    var initSettings = {
+    initSettings = {
       allGroups : true,
       stream : 'A',
       group : 1
@@ -63,9 +69,26 @@ angular.module('dent.controllers', [])
     $scope.settings = initSettings;
   }
 
+  $scope.currentGroup = $scope.groups[$scope.settings.group];
+
   $scope.updateSettings = function(){
     window.localStorage.setItem('mySettings', JSON.stringify($scope.settings));
   }
+  
+  $scope.chooseGroup = function(){
+    $scope.settings = JSON.parse(window.localStorage.getItem('mySettings'));
+    $scope.modal.show();
+  }
+
+  $scope.closeChoices = function(update){
+    // $scope.settings = { };
+    $scope.modal.hide();
+
+    if(update){
+      $scope.currentGroup = $scope.groups[$scope.settings.group];
+      $scope.updateSettings();
+    }
+  };
 })
 
 .controller("SubjectsCtrl", function($scope, $ionicModal, $ionicFilterBar, Subjects) {
@@ -90,26 +113,6 @@ angular.module('dent.controllers', [])
   }).then(function(modal) {
     $scope.modal = modal;
   });
-
-  $scope.search = function (){
-    filterBarInstance = $ionicFilterBar.show({
-      items: $scope.subjects,
-      done: function () {
-        $scope.searching = true;
-      },
-      update: function (filteredItems) {
-          if (filteredItems.length < 1) {
-            $scope.emptyContent = true;
-          }else{
-            $scope.emptyContent = false;
-          }
-        $scope.subjects = filteredItems;
-      },
-      cancel: function () {
-        $scope.searching = false;
-      }
-    });
-  };
   
   $scope.previewSubject = function(subject){
     $scope.subject = subject;
@@ -124,38 +127,13 @@ angular.module('dent.controllers', [])
   $scope.subject = subject;
 })
 
-.controller("ScheduleCtrl", function($scope, $timeout, $stateParams, $ionicSlideBoxDelegate, $ionicModal, schedule, Schedule, Subjects) {
+.controller("ScheduleCtrl", function($scope, $ionicModal, $ionicFilterBar, schedule) {
   vm = this;
-  var date = new Date();
+
   $scope.schedule = schedule;
   $scope.session = {};
   $scope.which = 1;
   $scope.activeTab = 0;
-  // $scope.curPos = date.getDay() - 1;
-
-  // vm.setActiveTabPosition = function(index){
-  //     var width = $('.tab-item').eq(index).css('width');
-  //     var position = $('.tab-item').eq(index).position();
-  //     $scope.activeTabPosition = position.left;
-  //     $scope.activeTabWidth = width;
-  //     $scope.activeTab = index;
-  // }
-
-  // window.onresize = function onresize() {
-  //   $('.indicator').removeClass('sliding');
-  //   vm.setActiveTabPosition($scope.curPos);
-  //   $timeout(function(){
-  //     $('.indicator').addClass('sliding');
-  //   }, 100);
-  // }
-
-  // $timeout(function(){
-  //   $ionicSlideBoxDelegate.slide($scope.curPos, 350);
-  //   $timeout(function(){
-  //     vm.setActiveTabPosition($scope.curPos);
-  //     $('.indicator').addClass('sliding');
-  //   }, 100);
-  // }, 100);
 
   $ionicModal.fromTemplateUrl('templates/session.html', {
     scope: $scope,
@@ -171,13 +149,23 @@ angular.module('dent.controllers', [])
   $scope.closeSession = function() {
     $scope.modal.hide();
   };
-
-  $scope.goToSlide = function(index){
-    $ionicSlideBoxDelegate.slide(index, 500);
-  }
-
-  $scope.slideChanged = function(index){
-      $scope.curPos = index;
-      vm.setActiveTabPosition(index);
-  }
+  $scope.search = function (){
+    filterBarInstance = $ionicFilterBar.show({
+      items: $scope.subjects,
+      done: function () {
+        $scope.searching = true;
+      },
+      update: function (filteredItems) {
+          // if (filteredItems.length < 1) {
+          //   $scope.emptyContent = true;
+          // }else{
+          //   $scope.emptyContent = false;
+          // }
+        // $scope.subjects = filteredItems;
+      },
+      cancel: function () {
+        $scope.searching = false;
+      }
+    });
+  };
 });

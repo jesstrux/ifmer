@@ -1,18 +1,19 @@
-<ion-view title="Settings">
-  <ion-content styl="top:200px">
+<ion-header-bar class="bar-calm bar bar-header bar-main disable-user-behavior" align-title="left">
+  <button clas="no-text" ng-click="$ionicGoBack()" class="button back-button buttons button-clear header-item" style="top:5px;max-height">
+    <i class="icon ion-android-arrow-back" style="font-size:52px"></i> 
+    <span class="back-text"></span>
+  </button>
+  <div class="title title-left header-item">Settings</div>
+</ion-header-bar>
+<ion-view titl="Settings" class="settingsPage">
+  <ion-content style="top:80px">
     <ion-list>
-        <div style="border-color: #E4E4E4;color:#9E9E9E" class="item item-divider">Schedule Settings</div>
-        <!-- <label class="item item-icon-left item-input" style="padding-left:40px;">
-          <i class="icon ion-ios-people"></i> &emsp;(stream)
-          <label class="input-label" style="width:auto"></label>
-          <input type="text" placeholder="" ng-model="settings.stream" style="border-bottom:1px solid #999;margin-left:25px;margin-right:5px;" ng-change="updateSettings()">
-        </label> -->
-        <ion-toggle class="toggle-small" ng-model="settings.allGroups" ng-change="updateSettings()">
+        <ion-checkbox class="item checkbox-dark item-checkbox-right" ng-model="settings.allGroups" ng-change="updateSettings()">
             Show tutorials for all groups
-        </ion-toggle>
+        </ion-checkbox>
         <label ng-hide="settings.allGroups" class="item item-icon-left item-input" style="padding-left:40px;">
           <i class="icon ion-android-people"></i> &emsp;(group)
-          <input type="text" placeholder="" ng-model="settings.group" style="border-bottom:1px solid #999;margin-left:25px;margin-right:5px;" ng-change="updateSettings()">
+          <input type="text" ng-model="settings.group" style="border-bottom:1px solid #999;margin-left:25px;margin-right:5px;" ng-change="updateSettings()">
         </label>
     </ion-list>
   </ion-content>

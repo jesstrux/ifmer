@@ -1,21 +1,17 @@
-<ion-view title="Subjects">
-    <ion-nav-buttons side="right">
-        <!-- <button class="button button-icon button-clear icon ion-android-search" ng-click="search()">
-        </button> -->
-        <button class="button button-icon button-clear icon ion-android-more-vertical" ng-click="mainPopover.show($event)">
-        </button>
-    </ion-nav-buttons>
-    <ion-content>
-        <div class="padding-vertical">
-            <div class="list list-inset item-balanced" ng-repeat="subject in subjects" ng-click="previewSubject(subject)">
-            	<div class="item item-icon-left subject">
-                    <i class="icon avatarish" ng-class="'icon-'+subject.theme">
-                        {{subject.shortname}}
-                    </i>
-            		<h2>{{subject.name}}</h2>
-                    <h3>{{subject.code}}</h3>
-	                <p>{{subject.tutor}}</p>
-            	</div>
+<ion-header-bar class="bar-calm bar bar-header bar-main disable-user-behavior" align-title="left">
+  <button clas="no-text" ng-click="$ionicGoBack()" class="button back-button buttons button-clear header-item" style="top:5px">
+    <i class="icon ion-android-arrow-back"></i> 
+    <span class="back-text"></span>
+  </button>
+  <div class="title title-left header-item">Subjects</div>
+</ion-header-bar>
+<ion-view>
+    <ion-content class="padding" style="top:60px">
+        <div class="list list-inse" ng-repeat="subject in subjects" ng-clic="previewSubject(subject)">
+            <div class="item has-border first-{{$first}} last-{{$last}} item-icon-lef subject">
+                <h2>{{subject.name}}</h2>
+                <h3>{{subject.code}}</h3>
+                <p><i class="icon ion-ios-money"></i></p>
             </div>
         </div>
     </ion-content>

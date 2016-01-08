@@ -1,21 +1,5 @@
-<ion-side-menus enable-menu-with-back-views="false">
-  <ion-side-menu-content>
-    <ion-nav-bar class="bar-dark">
-      <ion-nav-back-button clas="no-text">
-      </ion-nav-back-button>
-
-      <!-- <ion-nav-buttons side="left">
-        <button class="button button-icon button-clear icon ion-android-menu" menu-toggle="left">
-        </button>
-      </ion-nav-buttons> -->
-
-      <ion-nav-buttons side="right">
-      </ion-nav-buttons>
-    </ion-nav-bar>
-    <ion-nav-view name="menuContent"></ion-nav-view>
-  </ion-side-menu-content>
-
-  <script id="mainPopover.html" type="text/ng-template">
+<ion-nav-view name="menuContent"></ion-nav-view>
+<script id="mainPopover.html" type="text/ng-template">
     <ion-popover-view>
         <ion-list>
             <ion-item ng-hide="whatsActive('/app/subjects')" ng-click="navigateTo('/app/subjects')">Subjects</ion-item>
@@ -23,26 +7,3 @@
         </ion-list>
     </ion-popover-view>
 </script>
-
-  <!-- <ion-side-menu side="left">
-    <ion-header-bar class="bar-dark bar-expanded" style="height:150px;">
-      <h1 class="title" style="top:100px">IFMER</h1>
-    </ion-header-bar>
-    <ion-content style="top:154px">
-      <ion-list>
-        <ion-item class="item-icon-left" nav-clear menu-close href="#/app/home">
-          <i class="icon ion-ios-home-outline"></i>
-          Home
-        </ion-item>
-        <ion-item class="item-icon-left" nav-clear menu-close href="#/app/schedule">
-          <i class="icon ion-android-time rotate"></i>
-          Schedule
-        </ion-item>
-        <ion-item class="item-icon-left" nav-clear menu-close href="#/app/subjects">
-          <i class="icon ion-ios-book-outline"></i>
-          Subjects
-        </ion-item>
-      </ion-list>
-    </ion-content>
-  </ion-side-menu> -->
-</ion-side-menus>

@@ -1,0 +1,21 @@
+<ion-modal-view class="fade radio-choices">
+  <ion-header-bar class="bar-light" style="height:70px !important;box-shadow:0 0 4px 0 rgba(0,0,0,.16),0 0 2px 0 rgba(0,0,0,.12);">
+    <div class="title header-item" style="left:5px;">
+      Choose group
+    </div>
+    <!-- {{session.subject.subject || 'Communication Skills'}} -->
+  </ion-header-bar>
+  <ion-content style="top:75px;">
+    <ion-list style="padding-bottom:60px">
+      <ion-radio ng-model="settings.group" ng-value="1"> One </ion-radio>
+      <ion-radio ng-model="settings.group" ng-value="2"> Two </ion-radio>
+      <ion-radio ng-model="settings.group" ng-value="3"> Three </ion-radio>
+    </ion-list>
+  </ion-content>
+</ion-view>
+<ion-footer-bar class="bar bar-light bar-main">
+  <div class="button-bar">
+    <button style="max-height:64px;max-width:164px; font-size:20px;" ng-click="closeChoices()" class="button button-clear button-assertive">Cancel</button>
+    <button style="max-height:64px;max-width:164px; font-size:20px;" ng-click="closeChoices(true)" class="button button-clear button-positive">Ok</button>
+  </div>
+</ion-footer-bar>
