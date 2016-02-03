@@ -134,6 +134,7 @@ angular.module('dent.controllers', [])
   $scope.session = {};
   $scope.which = 1;
   $scope.activeTab = 0;
+  // $scope.searching = true;
 
   $ionicModal.fromTemplateUrl('templates/session.html', {
     scope: $scope,

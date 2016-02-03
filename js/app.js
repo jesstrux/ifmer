@@ -1,4 +1,4 @@
-var dent = angular.module('dent', ['ionic', 'tabSlideBox','ionicRipple', 'ionMdInput', 'jett.ionic.filter.bar', 'dent.controllers', 'dent.services']);
+var dent = angular.module('dent', ['ionic', 'tabSlideBox','ionicRipple', 'jett.ionic.filter.bar', 'dent.controllers', 'dent.services']);
 
 dent.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
