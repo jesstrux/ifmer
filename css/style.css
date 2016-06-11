@@ -1,4 +1,5 @@
 body{
+  background: #f9f9f9;
   -webkit-font-smoothing:antialiased;-webkit-text-size-adjust:none;width:320px;height:400px;
 }
 .item.inactive h2, .item.inactive h3, .item.inactive p{
@@ -7,8 +8,30 @@ body{
 .item.inactive:active{
   background: transparent !important;
 }
-.item-note{
+.item-subject .item-note{
   font-weight: bolder;
+}
+.item.item-divider{
+  background: transparent;
+  border: none;
+  /*max-height: 50px;
+  height: 50px;*/
+}
+.item.item-divider h3{
+  /*color: #E91E63;*/
+  line-height: 30px;
+  font-size: 1.3rem;font-weight:300;
+}
+.item.item-divider.icon-ish{
+  background: red;
+  margin-bottom: -70px;
+  background: transparent;
+  max-height: 120px;
+  z-index: 9999;
+}
+.item.item-divider.icon-ish h3{
+  font-weight: 600;
+  color: #03A9F4;
 }
 .list:not(.md-list) .item{
   border: 0;
@@ -42,7 +65,7 @@ body{
 }
 .bar.bar-main, .platform-android .filter-bar .bar.item-input-inset{
   height:64px;
-  box-shadow:0 2px 5px 0 rgba(0,0,0,.16),0 2px 10px 0 rgba(0,0,0,.12);
+  box-shadow:0 2px 5px 0 rgba(0,0,0,.26),0 2px 10px 0 rgba(0,0,0,.26);
 }
 .bar:not(.has-tabs-top) .title{
   height:64px;line-height:64px;left: 37px;
@@ -53,20 +76,6 @@ body{
 .platform-android .filter-bar .filter-bar-calm .item-input-wrapper {
     /*border-bottom: 0;*/
 }
-/*.session.item.item-calm{
-  background: #AEAEAE;
-  color: #eee;
-}
-
-.session.item.item-energized{
-  background: #C7C7C7;
-  color: #eee;
-}
-
-.session.item.item-royal{
-  background: #E1E1E1;
-  color: #fff;
-}*/
 
 .item.item-icon-left.subject{
   padding-left: 72px;
@@ -76,22 +85,33 @@ body{
   border-left-width: 0;
   border-right-width: 0;
 }
+.item.subject.activated{
+    background: transparent;
+}
 .item.subject:not(.first-true){
   margin-top: -23px;
+}
+.search-results .item.subject:not(.first-true){
+  margin-top: 0;
 }
 .item.subject.first-true{
   border-top-width: 0;
 }
 .item.subject h2{
+  color: #999 !important;
   font-size: 1.2rem;
+  font-weight: 600 !important;
 }
 .item.subject h3{
   font-size: 1.1rem;font-weight:300;
-  color: #333;
+  color: #888 !important;
   width:calc(100% - 50px);
 }
 .item.subject p{
   font-size: 1rem;
+}
+.item.subject > i{
+  color: #888 !important;
 }
 .item.subject > .item-note{
   margin-top: -25px;

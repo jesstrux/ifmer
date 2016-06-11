@@ -1,20 +1,28 @@
 <ion-header-bar class="bar-calm bar bar-header bar-main disable-user-behavior" align-title="left">
-  <button clas="no-text" ng-click="$ionicGoBack()" class="button back-button buttons button-clear header-item" style="top:5px;max-height">
-    <i class="icon ion-android-arrow-back" style="font-size:52px"></i> 
+  <button clas="no-text" ng-click="$ionicGoBack()" class="button back-button buttons button-clear header-item" style="top:5px">
+    <i class="icon ion-android-arrow-back"></i> 
     <span class="back-text"></span>
   </button>
   <div class="title title-left header-item">Settings</div>
 </ion-header-bar>
-<ion-view titl="Settings" class="settingsPage">
-  <ion-content style="top:80px">
-    <ion-list>
-        <ion-checkbox class="item checkbox-dark item-checkbox-right" ng-model="settings.allGroups" ng-change="updateSettings()">
-            Show tutorials for all groups
-        </ion-checkbox>
-        <label ng-hide="settings.allGroups" class="item item-icon-left item-input" style="padding-left:40px;">
-          <i class="icon ion-android-people"></i> &emsp;(group)
-          <input type="text" ng-model="settings.group" style="border-bottom:1px solid #999;margin-left:25px;margin-right:5px;" ng-change="updateSettings()">
-        </label>
-    </ion-list>
-  </ion-content>
+<ion-view>
+    <ion-content class="padding" style="top:60px">
+        <!-- <div class="item item-divide" style="border-bottom:1px solid #000">
+            <h3>Schedule settings</h3>
+        </div> -->
+        <div class="list md-list" ng-clic="previewSubject(subject)">
+            <div class="item has-border-bottom">
+                <h2>Stream</h2>
+                <h3>A</h3>
+            </div>
+            <ion-checkbox class="item checkbox-energized item-checkbox-right has-border-bottom" style="font-size:1.2rem;padding-top:30px;padding-bottom:30px;" ng-model="settings.allGroups" ng-change="updateSettings()">
+                All groups tutorials
+                <!-- <p>&nbsp;</p> -->
+            </ion-checkbox>
+            <div class="item has-border-bottom" ng-class="{'inactive' : settings.allGroups}" ng-click="settings.allGroups ? '' : chooseGroup()">
+                <h2>Group</h2>
+                <h3>{{currentGroup}}</h3>
+            </div>
+        </div>
+    </ion-content>
 </ion-view>

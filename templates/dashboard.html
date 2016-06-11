@@ -1,0 +1,49 @@
+<ion-header-bar class="bar-calm bar-main" align-title="left">
+  <div class="title title-left header-item" style="font-family:cursive;">Ifmer</div>
+</ion-header-bar>
+<ion-view>
+    <ion-content style="top:58px;background:#f9f9f9">
+    	<div class="list card">
+			<div class="item">
+				<h1 style="font-size:1.6rem;font-weight:400;color:#777;height:1.95rem;">
+					<span >{{salutation}}</span>
+				</h1>
+				<h3 style="font-size:1.3rem;font-weight:300">Welcome back.</h3>
+			</div>
+		</div>
+		<div class="item item-divider">
+	        <h3 style="font-size:1.2rem;font-weight:500;color:#777;">&nbsp; Today's classes</h3>
+	        <a ng-show="sessions.length > 3" class="badge badge-calm" style="line-height:23px;font-size:1.1rem;font-weight:410;border-radius:1px;text-decoration:none;box-shadow:0 1px 5px 0 rgba(0,0,0,.16)" ui-sref="app.schedule">
+	        	{{sessions.length - 3}} MORE
+	        </a>
+	    </div>
+        <div class="card" style="margin-bottom:0;margin-top:5px;" ng-repeat="session in sessions | limitTo : 3">
+			<div class="item subject item-icon-left" style="margin:0;padding-left: 25px;">
+			  <i class="icon" style="width:5px;left:0px;" auto-bg type="{{session.type}}"></i>
+			  <h2>{{session.subject.subject}}</h2>
+			  <h3>
+			  	{{session.timeline.timeline}}
+			  </h3>
+			  <span class="item-note">{{session.venue}}</span>
+			</div>
+		</div>
+		<br>
+		<div class="item item-divider">
+	        <h3 style="font-size:1.2rem;font-weight:500;color:#777;">&nbsp; Pending Tasks</h3>
+	        <a ng-hide="sessions.length > 3" class="badge badge-calm" style="line-height:23px;font-size:1.1rem;font-weight:410;border-radius:1px;text-decoration:none;box-shadow:0 1px 5px 0 rgba(0,0,0,.16)" ui-sref="app.schedule">
+	        	{{sessions.length - 3}} MORE
+	        </a>
+	    </div>
+        <div class="card" style="margin-bottom:0;margin-top:5px;" ng-repeat="session in sessions | limitTo : 3">
+			<div class="item subject item-icon-left" style="margin:0;padding-left: 25px;">
+			  <i class="icon" style="width:5px;left:0px;" auto-bg type="{{session.type}}"></i>
+			  <h2>{{session.subject.subject}}</h2>
+			  <h3>
+			  	{{session.timeline.timeline}}
+			  </h3>
+			  <span class="item-note">{{session.venue}}</span>
+			</div>
+		</div>
+		<div style="height:35px;background:transparent"></div>
+    </ion-content>
+</ion-view>

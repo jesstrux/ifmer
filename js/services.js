@@ -1,45 +1,22 @@
 angular.module('dent.services', [])
 
 .factory('Subjects', ['$http', '$q', function($http, $q) {
+  var subjects = { 
+            CSU07205 : 'Operating Systems', 
+            CSU07203 : 'Database Management',
+            CSU07202 : 'Programming in C II',
+            CSU07204 : 'Data Communication',
+            ITU07203 : 'Web Technologies',
+            ITU07204 : 'Systems Analysis & Design II'
+          };
+
     return {
         all: function() {
-            var def = $q.defer();
-
-            $http.get("js/subjects.json")
-              .success(function(data) {
-                for (var i = 0; i < data.length; i++) {
-                  if(data[i].credits === 10)
-                    data[i].theme = 'positive';
-                  else if(data[i].credits > 10)
-                    data[i].theme = 'assertive';
-                  else
-                    data[i].theme = 'balanced';
-                };
-                def.resolve(data);
-              })
-              .error(function() {
-                  def.reject("Failed to get subjects");
-              });
-
-            return def.promise;
+            return subjects;
         },
         get:function(code){
-          var subject = {};
-          var def = $q.defer();
-
-            $http.get("js/subjects.json")
-              .success(function(data) {
-                for (var i = 0; i < data.length; i++) {
-                  if(data[i].code === code){
-                    def.resolve(data[i]);
-                  }
-                };
-              })
-              .error(function() {
-                  def.reject("Failed to get subjects");
-              });
-
-            return def.promise;
+          console.log(code);
+          return subjects[code];
         }
     }
 }])
@@ -99,17 +76,16 @@ angular.module('dent.services', [])
         details.timeline = times[parseInt(session) - 1];
       }
 
-        $http.get("js/subjects.json")
-          .success(function(data) {
-            for (var i = 0; i < data.length; i++) {
-              if(data[i].code === code){
-                details.subject = data[i].name;
-              }
-            };
-          })
-          .error(function() {
-              def.reject("Failed to get subjects");
-          });
+      var subjects = { 
+          CSU07205 : 'Operating Systems', 
+          CSU07203 : 'Database Management',
+          CSU07202 : 'Programming in C II',
+          CSU07204 : 'Data Communication',
+          ITU07203 : 'Web Technologies',
+          ITU07204 : 'Systems Analysis & Design II'
+      };
+
+      details.subject = subjects[code];
 
       return details;
     }

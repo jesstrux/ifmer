@@ -1,246 +1,109 @@
-[
-  {
-    "day" : "Monday",
-    "sessions" : [
-      {
-        "sub_code":"CSU07101",
-        "session" : "1",
-        "type" : "self",
-        "group" : null,
-        "venue":null
-      },
-      {
-        "sub_code":"GSU07102",
-        "session" : "3",
-        "type" : "tutorial",
-        "group" : 2,
-        "venue": 220
-      },
-      {
-        "sub_code":"MTU07104",
-        "session" : "4",
-        "type" : "tutorial",
-        "group" : 1,
-        "venue":"110"   
-      },
-      {
-        "sub_code":"GSU07102",
-        "session" : "5",
-        "type" : "tutorial",
-        "group" : 3,
-        "venue":"343"   
-      },
-      {
-        "sub_code":"CSU07101",
-        "session" : "7&8",
-        "type" : "tutorial",
-        "group" : 3,
-        "venue":"LAB 5"   
-      }
-    ]
+[{
+  "day": "Monday",
+  "sessions": [{
+    "sub_code": "CSU07203",
+    "session": "1",
+    "type": "self",
+    "group": null,
+    "venue": null
+  }, {
+    "sub_code": "CSU07202",
+    "session": "10&11",
+    "type": "tutorial",
+    "group": 4,
+    "venue": "LAB 8"
+  }]
+}, {
+  "day": "Tuesday",
+  "sessions": [{
+    "sub_code": "CSU07202",
+    "session": "5&6",
+    "type": "lecture",
+    "group": null,
+    "venue": "TH F"
+  }, {
+    "sub_code": "ITU07203",
+    "session": "7",
+    "type": "tutorial",
+    "group": 4,
+    "venue": 111
+  }]
+}, {
+  "day": "Wednesday",
+  "sessions": [{
+    "sub_code": "ITU07204",
+    "session": "1",
+    "type": "self",
+    "group": null,
+    "venue": null
+  }, {
+    "sub_code": "CSU07205",
+    "session": "3&4",
+    "type": "lecture",
+    "group": null,
+    "venue": "F/HALL"
+  }, {
+    "sub_code": "ITU07204",
+    "session": "7&8",
+    "type": "lecture",
+    "group": null,
+    "venue": "TH E"
+  },{
+    "sub_code": "CSU07203",
+    "session": "10&11",
+    "type": "tutorial",
+    "group": 4,
+    "venue": "LAB 8"
+  }]
+}, {
+  "day": "Thursday",
+  "sessions": [{
+    "sub_code": "CSU07204",
+    "session": "1&2",
+    "type": "lecture",
+    "group": null,
+    "venue": "TH E"
+  }, {
+    "sub_code": "CSU07205",
+    "session": "3",
+    "type": "tutorial",
+    "group": 4,
+    "venue": 112
+  }, {
+    "sub_code": "CSU07203",
+    "session": "5&6",
+    "type": "lecture",
+    "group": null,
+    "venue": "TH E"
+  }]
+}, {
+  "day": "Friday",
+  "sessions": [{
+    "sub_code": "CSU07205",
+    "session": "1",
+    "type": "self",
+    "group": null,
+    "venue": null
+  }, {
+    "sub_code": "ITU07203",
+    "session": "8&9",
+    "type": "lecture",
+    "group": null,
+    "venue": "TH E"
+  }, {
+    "sub_code": "ITU07204",
+    "session": "10&11",
+    "type": "tutorial",
+    "group": 4,
+    "venue": "LAB 8"
+  }]
+},
+{
+  "day": "Saturday",
+  "sessions": []
   },
   {
-    "day" : "Tuesday",
-    "sessions" : [
-      {
-        "sub_code":"MTU07104",
-        "session" : "1",
-        "type" : "self",
-        "group" : null,
-        "venue":null   
-      },
-      {
-        "sub_code":"GSU07103",
-        "session" : "2",
-        "type" : "tutorial",
-        "group" : 2,
-        "venue":116   
-      },
-      {
-        "sub_code":"GSU07102",
-        "session" : "3",
-        "type" : "tutorial",
-        "group" : 3,
-        "venue": "LAB 2"   
-      },
-      {
-        "sub_code":"GSU07103",
-        "session" : "5",
-        "type" : "tutorial",
-        "group" : 1,
-        "venue":212   
-      },
-      {
-        "sub_code":"GSU07103",
-        "session" : "6",
-        "type" : "tutorial",
-        "group" : 3,
-        "venue":337   
-      },
-      {
-        "sub_code":"ITU07103",
-        "session" : "7",
-        "type" : "tutorial",
-        "group" : 3,
-        "venue":110   
-      },
-      {
-        "sub_code":"ITU07103",
-        "session" : "8",
-        "type" : "tutorial",
-        "group" : 1,
-        "venue":110   
-      },
-      {
-        "sub_code":"MTU07104",
-        "session" : "11&12",
-        "type" : "lecture",
-        "group" : null,
-        "venue":"TH A"   
-      }
-    ]
-  },
-  {
-    "day" : "Wednesday",
-    "sessions" :[
-      {
-        "sub_code":"GSU07102",
-        "session" : "1&2",
-        "type" : "lecture",
-        "group" : null,
-        "venue":338   
-      },
-      {
-        "sub_code":"ITU07103",
-        "session" : "3&4",
-        "type" : "lecture",
-        "group" : null,
-        "venue":338   
-      },
-      {
-        "sub_code":"ITU07103",
-        "session" : "5",
-        "type" : "tutorial",
-        "group" : 2,
-        "venue":343   
-      },
-      {
-        "sub_code":"GSU07103",
-        "session" : "7&8",
-        "type" : "lecture",
-        "group" : null,
-        "venue":213   
-      },
-      {
-        "sub_code":"CSU07101",
-        "session" : "10",
-        "type" : "tutorial",
-        "group" : 1,
-        "venue":"LAB 2"   
-      }
-    ]
-  },
-  {
-    "day" : "Thursday",
-    "sessions" : [
-      {
-        "sub_code":"CSU07102",
-        "session" : "1",
-        "type" : "self",
-        "group" : null,
-        "venue":null   
-      },
-      {
-        "sub_code":"CSU07102",
-        "session" : "2",
-        "type" : "tutorial",
-        "group" : 2,
-        "venue": "LAB 4"
-      },
-      {
-        "sub_code":"CSU07102",
-        "session" : "3",
-        "type" : "tutorial",
-        "group" : 1,
-        "venue": "LAB 4"
-      },
-      {
-        "sub_code":"CSU07101",
-        "session" : "4&5",
-        "type" : "tutorial",
-        "group" :  2,
-        "venue": "LAB 4"
-      },
-      {
-        "sub_code":"CSU07102",
-        "session" : "6&7",
-        "type" : "lecture",
-        "group" : null,
-        "venue":113   
-      },
-      {
-        "sub_code":"GSU07102",
-        "session" : "10",
-        "type" : "tutorial",
-        "group" : 1,
-        "venue":216   
-      }
-    ]
-  },
-  {
-    "day" : "Friday",
-    "sessions" : [
-      {
-        "sub_code":"GSU07102",
-        "session" : "1",
-        "type" : "self",
-        "group" : null,
-        "venue":null   
-      },
-      {
-        "sub_code":"CSU07101",
-        "session" : "4&5",
-        "type" : "lecture",
-        "group" : null,
-        "venue":"338"   
-      },
-      {
-        "sub_code":"MTU07104",
-        "session" : "8",
-        "type" : "tutorial",
-        "group" : 3,
-        "venue":336   
-      },
-      {
-        "sub_code":"MTU07104",
-        "session" : "10",
-        "type" : "tutorial",
-        "group" : 2,
-        "venue":117   
-      }
-    ]
-  },
-  {
-    "day" : "Saturday",
-    "sessions" : [
-      {
-        "sub_code":"ITU07103",
-        "session" : "1",
-        "type" : "self",
-        "group" : null,
-        "venue": null
-      },
-      {
-        "sub_code":"GSU07103",
-        "session" : "2",
-        "type" : "self",
-        "group" : null,
-        "venue":null 
-      }
-    ]
-  },
-  {
-    "day" : "Sunday",
-    "sessions" : []
-  }
+  "day": "Sunday",
+  "sessions": []
+}
 ]

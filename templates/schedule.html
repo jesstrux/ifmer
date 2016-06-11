@@ -1,84 +1,105 @@
-<ion-view title="Schedule">
-    <ion-nav-buttons side="right">
-        <button class="button button-icon button-clear icon ion-android-calendar">
+<ion-header-bar class="bar-calm has-tabs-top bar bar-header disable-user-behavior" align-title="left"><button clas="no-text" ng-click="$ionicGoBack()" class="button back-button hide buttons  button-clear header-item"><i class="icon ion-android-arrow-back"></i> 
+  <span class="back-text"></span></button>
+  <div class="title title-left header-item" style="right: 100px;">Schedule</div>
+  <div class="buttons buttons-right"><span class="right-buttons">
+    <button class="button button-icon button-clear icon ion-android-search" ng-click="search()">
         </button>
-        <button class="button button-icon button-clear icon ion-android-more-vertical" ng-click="mainPopover.show($event)">
-        </button>
-      </ion-nav-buttons>
-      <div class="tabs-top tabs-dark tabs-striped tabs-striped-bottom" ng-hid="searching" ng-show="which==1">
-        <div class="tabs">
-          <div class="indicator" style="left:{{activeTabPosition+'px'}}; width: {{activeTabWidth}}"></div>
-          <a ng-repea="day in schedule" ng-class="{'active': activeTab === 0}" class="tab-item" ng-click="goToSlide(0)">
-            <!-- <span class="tab-title ng-binding">{{day.day.substr(0,3)}}</span> -->
-            <span class="tab-title ng-binding">Mon</span>
-          </a>
-          <a ng-class="{'active': activeTab === 1}" class="tab-item" ng-click="goToSlide(1)">
-            <!-- <span class="tab-title ng-binding">{{day.day.substr(0,3)}}</span> -->
-            <span class="tab-title ng-binding">Tue</span>
-          </a>
-          <a ng-class="{'active': activeTab === 2}" class="tab-item" ng-click="goToSlide(2)">
-            <!-- <span class="tab-title ng-binding">{{day.day.substr(0,3)}}</span> -->
-            <span class="tab-title ng-binding">Wed</span>
-          </a>
-          <a ng-class="{'active': activeTab === 3}" class="tab-item" ng-click="goToSlide(3)">
-            <!-- <span class="tab-title ng-binding">{{day.day.substr(0,3)}}</span> -->
-            <span class="tab-title ng-binding">Thu</span>
-          </a>
-          <a ng-class="{'active': activeTab === 4}" class="tab-item" ng-click="goToSlide(4)">
-            <!-- <span class="tab-title ng-binding">{{day.day.substr(0,3)}}</span> -->
-            <span class="tab-title ng-binding">Fri</span>
-          </a>
-          <a ng-class="{'active': activeTab === 5}" class="tab-item" ng-click="goToSlide(5)">
-            <!-- <span class="tab-title ng-binding">{{day.day.substr(0,3)}}</span> -->
-            <span class="tab-title ng-binding">Sat</span>
-          </a>
-          <a ng-class="{'active': activeTab === 6}" class="tab-item" ng-click="goToSlide(6)">
-            <!-- <span class="tab-title ng-binding">{{day.day.substr(0,3)}}</span> -->
-            <span class="tab-title ng-binding">Sun</span>
-          </a>
+    <!-- <button class="button button-icon button-clear icon ion-android-calendar">
+    </button> -->
+    <button class="button button-icon button-clear icon ion-android-more-vertical" ng-click="mainPopover.show($event)">
+    </button>
+  </span></div></ion-header-bar>
+<ion-view titl="Schedule">
+  <ion-content scroll="false" style="margin-top:-8px;background:#f9f9f9">
+    <tab-slide-box>
+      <div class="tsb-icons" ng-hide="searching">
+        <div class="tsb-ic-wrp">
+          <ion-scroll direction="x" class="tsb-hscroll">
+            <a ripple href="javascript:;" >MONDAY</a>
+            <a ripple href="javascript:;" >TUESDAY</a>
+            <a ripple href="javascript:;" >WEDNESDAY</a>
+            <a ripple href="javascript:;" >THURSDAY</a>
+            <a ripple href="javascript:;" >FRIDAY</a>
+            <a ripple href="javascript:;" >SATURDAY</a>
+            <a ripple href="javascript:;" >SUNDAY</a>
+          </ion-scroll>
         </div>
-    </div>
-      <div  ng-switch on="which">
-          <ion-content ng-switch-when="2">
-                <div class="list" ng-if="day.sessions.length > 0" ng-repeat="day in schedule">
-                    <div class="item item-icon-left" style="padding-left:90px;" ng-repeat="session in day.sessions">
-                        <i class="icon" ng-if="$index==0" style="margin-top:-10px;font-size:25px;">{{day.day.substr(0,3)}}</i>
-                        <div class="list">
-                            <div class="item item-icon-lef" ng-class="{'item-royal' : session.type === 'self', 'item-energized' : session.type === 'tutorial', 'item-calm' : session.type === 'lecture'}" ng-click="previewSession(session)">
-                                <h2 style="color:#fff;font-size:26px">{{session.timeline.timeline}}</h2>
-                                <h2 style="color:#fff;font-size:20px">{{session.subject.subject}}</h2>
-                            </div>
+      </div>
+      <div class="search-results" ng-hide="!searching" style="margin-top:30px;height:100%;width:100%;background: #f9f9f9;">
+        <!-- <div class="item" style="border-top: 0;">
+            <h2 style="font-size:1em;font-weight:300;text-align: center;">No results for search</h2>
+        </div> -->
+        <!-- <ion-content scroll="true" style="height:100%;width:100%;background:red"> -->
+        <div class="list" ng-repeat="day in searchResults">
+          <div class="item item-divider icon-is">
+            <h3>
+              {{day.day}}
+            </h3>
+          </div>
+          <div class="ite card" ng-repeat="session in day.sessions" style="margin-bottom:0;margin-top:5px;">
+              <div class="list">
+                  <div class="item has-borde first-{{$first}} last-{{$last}} item-icon-left subject" style="text-align: left;" ng-click="previewSession(session)">
+                      <i class="icon" ng-class="{'ion-android-people' : session.type === 'tutorial', 'ion-android-person' : session.type === 'self', 'ion-ios-people' : session.type === 'lecture'}" style="color:#555">
+                      </i>
+                      <h2>{{session.timeline.timeline}}
+                        <span class="item-note" ng-show="session.venue !== null">
+                          <i class="ion-android-pin"></i>
+                        </span>
+                      </h2>
+                      <h3>
+                        {{session.subject.subject}}
+                      </h3>
+                      <p>{{subject.tutor}}</p>
+                      <span class="item-note">
+                        {{session.venue}}
+                      </span>
+                  </div>
+              </div>
+          </div>
+          <!-- </ion-content> -->
+        </div>
+        <!-- </ion-content> -->
+      </div>
+      <ion-slide-box show-pager="false" on-slide-changed="slideHasChanged($index)" class="schedule" ng-hide="searching">
+        <ion-slide class="slide" ng-repeat="day in schedule">
+          <ion-content>
+              <div class="list" style="padding-bottom:60px">
+                  <div class="item" ng-if="day.sessions.length < 1">
+                    <div class="list">
+                        <div class="item">
+                            <h2 style="font-weight:300">No sessions on this day.</h2>
                         </div>
                     </div>
-                </div>
-            </ion-content>
-            <ion-content class="has-tabs-top" ng-switch-when="1">
-                <ion-slide-box show-pager="false" on-slide-changed="slideChanged(index)">
-                    <ion-slide class="slide" ng-i="day.sessions.length > 0" ng-repeat="day in schedule" style="position: relative;">
-                        <!-- <i class="icon" style="position: absolute;top:25px;left:15px;font-size:25px;">{{day.day.substr(0,3)}}</i> -->
-                        <ion-content>
-                            <div class="list">
-                                <div class="item item-icon-lef" styl="padding-left:90px;" ng-if="day.sessions.length < 1">
-                                    <div class="list">
-                                        <div class="item">
-                                            <h2>No sessions on this day.</h2>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item item-icon-lef" styl="padding-left:90px;" ng-repeat="session in day.sessions | filter : {invalid : false}">
-                                    <div class="list">
-                                        <div class="item item-icon-lef" ng-class="{'item-royal' : session.type === 'self', 'item-energized' : session.type === 'tutorial', 'item-calm' : session.type === 'lecture'}" ng-click="previewSession(session)">
-                                            <h2 style="color:#fff;font-size:26px">{{session.timeline.timeline}}</h2>
-                                            <h2 style="color:#fff;font-size:20px">{{session.subject.subject}}</h2>
-
-                                            <!-- <h2 style="color:#fff;font-size:20px">{{session.invalid}}</h2> -->
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </ion-content>
-                    </ion-slide>
-                </ion-slide-box>
-            </ion-content>
-      </div>
+                  </div>
+                  <div class="item" ng-repeat="session in day.sessions | filter : {invalid : false}">
+                      <div class="list">
+                          <div ripple class="item first-{{$first}} last-{{$last}} item-icon-left subject" style="text-align: left;" ng-click="previewSession(session)">
+                              <i class="icon" style="color:#555" auto-icon type="{{session.type}}">
+                                  <!-- {{session.type.substr(0, 1)}} -->
+                              </i>
+                              <h2>{{session.timeline.timeline}}
+                                <span class="item-note" ng-show="session.venue !== null">
+                                  <i class="ion-android-pin"></i>
+                                </span>
+                              </h2>
+                              <h3>
+                                {{session.subject.subject}}
+                              </h3>
+                              <p>{{subject.tutor}}</p>
+                              <span class="item-note">
+                                {{session.venue}}
+                              </span>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </ion-content>
+        </ion-slide>
+      </ion-slide-box>
+    </tab-slide-box>
+  </ion-content>
+  <script id="sessionmodal.html" type="text/ng-template">
+    <ion-modal-view class="fade">
+<ion-header-bar auto-bg type="{{session.type}}" style="height:70px !important;box-shadow:0 0 4px 0 rgba(0,0,0,.16),0 0 2px 0 rgba(0,0,0,.12);"><div class="title header-item" style="font-size:1.2rem !important;overflow:visible;left:5px;margin-top:-9px;">{{session.subject.subject}}<p style="font-size:1rem;margin-top:-40px;colo:#999">{{session.type}}</p></div></ion-header-bar><ion-content style="top:75px"><div class="list" style="margin:0"><div class="item item-icon-left"><i class="icon ion-clock" style="font-size:20px;"></i><h2>{{session.timeline.timeline}}</h2></div><div class="item item-icon-left"><i class="icon ion-location" style="font-size:20px;"></i><h2>{{session.venue || 'Anywhere'}}</h2></div><div class="item item-icon-left" ng-if="session.type==='tutorial'"><i class="icon ion-android-people" style="font-size:20px;"></i><h2>{{session.group}}</h2></div></div></ion-content></ion-modal-view>
+  </script>
 </ion-view>

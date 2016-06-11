@@ -1,4 +1,4 @@
-var dent = angular.module('dent', ['ionic', 'tabSlideBox','ionicRipple', 'jett.ionic.filter.bar', 'dent.controllers', 'dent.services']);
+var dent = angular.module('dent', ['ionic', 'tabSlideBox','ionicRipple', 'jett.ionic.filter.bar', 'dent.controllers', 'dent.services', 'dent.directives']);
 
 dent.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -20,11 +20,38 @@ dent.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
 
   $stateProvider
 
-    .state('app', {
+  .state('app', {
     url: '/app',
     abstract: true,
     templateUrl: 'templates/menu.html',
     controller: 'AppCtrl'
+  })
+
+  .state('app.home', {
+    url : '/home',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/dashboard.html',
+        controller: 'HomeCtrl'
+      }
+    },
+    resolve: {
+      schedule: function(Schedule) {
+        var schedule, settings, filterGroups, group;
+        var localSettings = window.localStorage.getItem('mySettings');
+
+        if(localSettings){
+          settings = JSON.parse(localStorage.mySettings);;
+          filterGroups = !settings.allGroups;
+          group = settings.group;
+        }else{
+          filterGroups = false;
+          group = null;
+        }
+
+        return Schedule.full(filterGroups, group);
+      }
+    }
   })
 
   .state('app.subjects', {
@@ -40,7 +67,7 @@ dent.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
     url: '/settings',
     views: {
       'menuContent': {
-        templateUrl: 'templates/settings2.html',
+        templateUrl: 'templates/settings.html',
         controller: 'SettingsCtrl'
       }
     }
@@ -50,7 +77,7 @@ dent.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
     url: '/schedule',
     views: {
       'menuContent': {
-        templateUrl: 'templates/new.html',
+        templateUrl: 'templates/schedule.html',
         controller: 'ScheduleCtrl'
       }
     },
@@ -73,5 +100,5 @@ dent.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
     }
   });
 
-  $urlRouterProvider.otherwise('/app/schedule');
+  $urlRouterProvider.otherwise('app/schedule');
 });

@@ -17,9 +17,9 @@ angular.module('dent.controllers', [])
       $scope.mainPopover = popover;
   });
 
-  $scope.$on('$destroy', function() {
-      $scope.mainPopover.remove();
-  });
+  // $scope.$on('$destroy', function() {
+  //     $scope.mainPopover.remove();
+  // });
 
   $scope.closeMainPopover = function() {
       $scope.mainPopover.hide();
@@ -40,6 +40,25 @@ angular.module('dent.controllers', [])
     
     $scope.$broadcast('settingsChanged');
   };
+})
+
+.controller('HomeCtrl', function($scope, schedule) {
+  var date = new Date();
+  var dayidx = date.getDay();
+  $scope.salutation;
+  var hrs = date.getHours();
+
+  if(hrs >= 5 && hrs <= 11){
+    $scope.salutation = "Good Morning!";
+  }else if(hrs >= 12 && hrs < 15){
+    $scope.salutation = "Good Afternoon!";
+  }else if(hrs >= 15 && hrs <= 21){
+    $scope.salutation = "Good Evening!";
+  }else{
+    $scope.salutation = "Hey there!";
+  }
+
+  $scope.sessions = schedule[dayidx].sessions;
 })
 
 .controller('SettingsCtrl', function($scope, $ionicModal){  
@@ -129,13 +148,13 @@ angular.module('dent.controllers', [])
 
 .controller("ScheduleCtrl", function($scope, $ionicModal, $ionicFilterBar, schedule) {
   vm = this;
-
   $scope.schedule = schedule;
   $scope.session = {};
   $scope.which = 1;
   $scope.activeTab = 0;
   // $scope.searching = true;
 
+  // var sessionmodal = '';
   $ionicModal.fromTemplateUrl('templates/session.html', {
     scope: $scope,
     animation: 'fade-in'
@@ -151,22 +170,19 @@ angular.module('dent.controllers', [])
     $scope.modal.hide();
   };
   $scope.search = function (){
+    $scope.searchResults = $scope.schedule;
     filterBarInstance = $ionicFilterBar.show({
-      items: $scope.subjects,
+      items: $scope.searchResults,
       done: function () {
         $scope.searching = true;
       },
       update: function (filteredItems) {
-          // if (filteredItems.length < 1) {
-          //   $scope.emptyContent = true;
-          // }else{
-          //   $scope.emptyContent = false;
-          // }
-        // $scope.subjects = filteredItems;
+        $scope.searchResults = filteredItems;
       },
       cancel: function () {
         $scope.searching = false;
       }
+      //   filterProperties: 'sessions'
     });
   };
 });

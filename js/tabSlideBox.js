@@ -86,6 +86,7 @@ angular.module('tabSlideBox', [])
 						var day = date.getDay();
 
 						initialIndex = parseInt(day - 1);
+						// initialIndex = 1;
 					}
 					
 					//If initial element is 0, set position of the tab to 0th tab 
