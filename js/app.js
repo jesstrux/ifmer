@@ -2,15 +2,23 @@ var dent = angular.module('dent', ['ionic', 'tabSlideBox','ionicRipple', 'jett.i
 
 dent.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
+    // if we have the keyboard plugin, let use it
     if (window.cordova && window.cordova.plugins.Keyboard) {
+      //Lets hide the accessory bar fo the keyboard (ios)
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+      // also, lets disable the native overflow scroll
       cordova.plugins.Keyboard.disableScroll(true);
-
     }
     if (window.StatusBar) {
-      // org.apache.cordova.statusbar required
-      StatusBar.styleDefault();
+      if (ionic.Platform.isAndroid()) {
+        StatusBar.backgroundColorByHexString("#2196F3");
+      } else {
+        StatusBar.styleLightContent();
+      }
     }
+    $timeout(function() {
+      navigator.splashscreen.hide();
+    }, 500);
   });
 })
 
