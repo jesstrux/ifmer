@@ -25,7 +25,7 @@
           </ion-scroll>
         </div>
       </div>
-      <div class="search-results" ng-hide="!searching" style="margin-top:30px;height:100%;width:100%;background: #f9f9f9;">
+      <ion-scroll class="search-results" ng-hide="!searching" style="margin-top:30px;height:100%;width:100%;background: #f9f9f9;">
         <!-- <div class="item" style="border-top: 0;">
             <h2 style="font-size:1em;font-weight:300;text-align: center;">No results for search</h2>
         </div> -->
@@ -59,7 +59,7 @@
           <!-- </ion-content> -->
         </div>
         <!-- </ion-content> -->
-      </div>
+      </ion-scroll>
       <ion-slide-box show-pager="false" on-slide-changed="slideHasChanged($index)" class="schedule" ng-hide="searching">
         <ion-slide class="slide" ng-repeat="day in schedule">
           <ion-content>

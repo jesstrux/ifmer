@@ -40,7 +40,7 @@
 .tabbed-slidebox .tsb-icons a {
   display: inline-block;
   width: 54px;
-  font-size: 2.5em;
+  font-size: 2em;
   color: rgba(255, 255, 255, 0.8);
   /*color: rgba(5, 5, 5, 0.5);*/
   -webkit-transform:translate3d(0,8px,0);
@@ -91,10 +91,7 @@
   border-bottom: 3px solid transparent;
 }
 .tabbed-slidebox .tsb-icons .scroll a.active {
-  font-size: 1.5em;
-  padding: 0 10px;
   border-bottom: 0.25rem solid #fff;
-  /*border-bottom: 3px solid #555;*/
   margin-bottom: -1.5%;
 }
 
